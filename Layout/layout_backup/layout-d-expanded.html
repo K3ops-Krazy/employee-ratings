@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Layout D Expanded</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: #111;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      font-family: 'Segoe UI', sans-serif;
+      color: white;
+    }
+
+    h1 { margin: 20px; }
+
+    .svg-container {
+      max-width: 90vw;
+      max-height: 80vh;
+      overflow: auto;
+      border-radius: 12px;
+      box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
+    }
+
+    object {
+      width: 100%;
+      height: 800px;
+      border: none;
+    }
+
+    .back-button {
+      margin: 20px;
+      background: #ffcc00;
+      padding: 10px 20px;
+      border-radius: 8px;
+      color: black;
+      font-weight: bold;
+      text-decoration: none; /* fixed */
+    }
+    .back-button:hover { background: #ffe066; }
+  </style>
+</head>
+<body>
+
+  <h1>Layout D - Expanded View</h1>
+
+  <div class="svg-container">
+    <!-- Use ONE of these; delete the other -->
+    <!-- Local pure SVG you edited -->
+    <!-- <object id="svgObj" data="layout_page1.svg" type="image/svg+xml"></object> -->
+
+    <!-- The pure SVG I generated earlier -->
+	
+	
+    <object id="svgObj" data="layout_page1.svg" type="image/svg+xml"></object>
+  </div>
+
+  <a href="layout-section.html" class="back-button">← Back</a>
+
+  <script>
+  (function () {
+    const obj = document.getElementById('svgObj');
+
+    function init() {
+      const doc = obj.contentDocument || (obj.getSVGDocument && obj.getSVGDocument());
+      if (!doc) { setTimeout(init, 80); return; }
+
+      const svg = doc.querySelector('svg');
+      if (!svg) { setTimeout(init, 80); return; }
+
+      const pt = svg.createSVGPoint();
+      let start = null, box = null;
+
+      function cursorToSVG(evt) {
+        pt.x = evt.clientX; pt.y = evt.clientY;
+        return pt.matrixTransform(svg.getScreenCTM().inverse());
+      }
+
+      svg.addEventListener('mousedown', (e) => {
+        if (e.button !== 0) return; // left mouse only
+        const p = cursorToSVG(e);
+        start = p;
+
+        box = doc.createElementNS('http://www.w3.org/2000/svg', 'rect');
+        box.setAttribute('x', p.x);
+        box.setAttribute('y', p.y);
+        box.setAttribute('fill', 'rgba(255,0,0,.15)');
+        box.setAttribute('stroke', 'red');
+        box.setAttribute('stroke-dasharray', '4 3');
+        svg.appendChild(box);
+      });
+
+      svg.addEventListener('mousemove', (e) => {
+        if (!start || !box) return;
+        const p = cursorToSVG(e);
+        const x = Math.min(start.x, p.x), y = Math.min(start.y, p.y);
+        const w = Math.abs(p.x - start.x), h = Math.abs(p.y - start.y);
+        box.setAttribute('x', x);
+        box.setAttribute('y', y);
+        box.setAttribute('width', w);
+        box.setAttribute('height', h);
+      });
+
+      svg.addEventListener('mouseup', () => {
+        if (!start || !box) return;
+        const x = +box.getAttribute('x');
+        const y = +box.getAttribute('y');
+        const w = +box.getAttribute('width');
+        const h = +box.getAttribute('height');
+        const cx = (x + w / 2).toFixed(1);
+        const ty = (y - 6).toFixed(1);
+
+        console.log(
+`<a href="station.html?name=NAME" target="_top">
+  <rect class="hs" x="${x.toFixed(1)}" y="${y.toFixed(1)}" width="${w.toFixed(1)}" height="${h.toFixed(1)}" />
+  <text class="lbl" x="${cx}" y="${ty}" text-anchor="middle">NAME</text>
+</a>`
+        );
+
+        start = null; box = null;
+      });
+    }
+
+    obj.addEventListener('load', init);
+    setTimeout(init, 150); // safety retry
+  })();
+  </script>
+
+</body>
+</html>

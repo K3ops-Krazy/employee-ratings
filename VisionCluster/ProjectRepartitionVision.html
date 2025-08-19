@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Split Page</title>
+  <style>
+html {
+  scroll-behavior: smooth;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+h1 {
+  font-size: 70px;
+  color: white;
+  text-align: center;
+  margin: 40px 0 20px;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background: linear-gradient(135deg, #5A3ABF, #D13C8A, #FF4C1F, #FF5E1F, #FFD200);
+  overflow-y: auto;
+  position: relative;
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  background-size: 400% 400%;
+  animation: gradientShift 15s ease infinite;
+}
+
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.wrapper {
+  min-height: 100vh;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
+  padding: 40px 0;
+  overflow-y: auto;
+  padding-top: 200px; /* spațiu pentru top-bar */
+}
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 20px;
+  align-items: center;
+}
+
+.item {
+  width: 550px;
+  height: 570px;
+  margin: 15px;
+  backdrop-filter: blur(5px);
+  background-color: rgba(255, 255, 255, 0.3);
+  border-radius: 60px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-size: 16px;
+  font-weight: bold;
+  color: #333;
+  overflow: hidden;
+  position: relative;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.item:hover {
+  transform: scale(1.05);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+.image-container {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding-top: 20px;
+}
+
+.image-container img {
+  width: 100%;
+  height: auto;
+  max-height: 190px;
+  object-fit: contain;
+  border-radius: 20px;
+}
+
+.title {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 30px;
+  font-weight: bold;
+  color: #ffffff;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+}
+
+.player-container {
+  position: absolute;
+  margin-top: 160px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: transform 0.3s ease;
+  cursor: grab;
+}
+
+.player-container:hover {
+  transform: scale(1.1);
+}
+
+.player-circle {
+  width: 170px;
+  height: 170px;
+  border-radius: 50%;
+  overflow: hidden;
+  background-color: rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(8px);
+  border: 4px solid white;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.4);
+}
+
+.player-circle img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.player-name {
+  margin-top: 10px;
+  font-size: 30px;
+  font-weight: bold;
+  color: white;
+  text-shadow: 1px 1px 3px black;
+  text-align: center;
+}
+
+.player-position {
+  font-size: 20px;
+  color: white;
+  margin-top: 2px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  text-shadow: 1px 1px 3px black;
+}
+
+.player-container:hover .player-position{
+  opacity: 1;
+}
+
+.top-bar {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 50px 60px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: rgba(255, 255, 255, 0.2); /* bară albă */
+  z-index: 1000;
+  backdrop-filter: blur(8px);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+
+.project-link,
+.project-link1 {
+  font-size: 30px;
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  background-color: transparent;
+  padding: 12px 24px;
+  border-radius: 12px;
+  border: 2px solid transparent;
+  transition: all 0.4s ease;
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.project-link:hover,
+.project-link1:hover {
+  background: linear-gradient(135deg, #5A3ABF, #D13C8A, #FF4C1F, #FFD200);
+  color: white;
+  background-size: 400% 400%;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  animation: gradientShift 5s ease infinite;
+}
+
+.player-skill {
+  font-size: 18px;
+  font-weight: bold;
+  color: white;
+  margin-bottom: 8px;
+  text-shadow: 1px 1px 3px black;
+  text-align: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  position: relative;
+  top: -10px;
+}
+
+.player-container:hover .player-skill {
+  opacity: 1;
+}
+
+  </style>
+</head>
+<body>
+
+<div class="wrapper">
+    <div class="top-bar">
+      <a href="ProjectBKPRepartitionAssyTest.html" class="project-link">ProjectBKPRepartitionVision</a>
+      <a href="..\Index.html" class="project-link">Home</a>
+    </div>
+
+<div class="container">
+    <!-- Item 1 -->
+<div class="item">
+    <div class="image-container">
+      <img src="../Poze/FPK FA Linia 1.png" alt="FPK FA Linia 1" />
+      <div class="title">FPK FA LINIA 1</div>
+    </div>
+
+    <!-- Player inside item -->
+    <div class="player-container" data-id="4">
+      <div class="player-skill">VISION EXPERT</div>
+      <div class="player-circle">
+        <img src="../Poze/Vasileniuc.jpg" alt="Vasileniuc" />
+      </div>
+      <div class="player-name">Vasileniuc Gheorghe</div>
+	  <div class="player-position">Test Engineer</div>
+    </div>
+</div>
+  
+  <!-- Item 2 -->
+ <div class="item">
+    <div class="image-container">
+      <img src="../Poze/FPK FA Linia 1.png" alt="FPK FA Linia 1" />
+      <div class="title">FPK FA LINIA 2</div>
+    </div>
+
+    <!-- Player inside item -->
+    <div class="player-container" data-id="10">
+      <div class="player-skill">VISION EXPERT</div>
+      <div class="player-circle">
+        <img src="../Poze/Vasileniuc.jpg" alt="Vasileniuc" />
+      </div>
+      <div class="player-name">Vasileniuc Gheorghe</div>
+	  <div class="player-position">Test Engineer</div>
+    </div>
+ </div>
+  
+  <!-- Item 3 -->
+  <div class="item">
+    <div class="image-container">
+      <img src="../Poze/FPK FA Linia 1.png" alt="FPK FA Linia 1" />
+      <div class="title">FPK FA LINIA 3</div>
+    </div>
+
+    <!-- Player inside item -->
+    <div class="player-container" data-id="11">
+      <div class="player-skill">VISION EXPERT</div>
+      <div class="player-circle">
+        <img src="../Poze/Vasileniuc.jpg" alt="Vasileniuc" />
+      </div>
+      <div class="player-name">Vasileniuc Gheorghe</div>
+	  <div class="player-position">Test Engineer</div>
+    </div>
+  </div>
+  
+  <!-- Item 4 -->
+  <div class="item">
+    <div class="image-container">
+      <img src="../Poze/Display Assy L1.png" alt="FPK FA Linia 1" />
+      <div class="title">Display Assy L1</div>
+    </div>
+
+    <!-- Player inside item -->
+    <div class="player-container" data-id="6">
+      <div class="player-skill">CYBER SECURITY</div>
+      <div class="player-circle">
+        <img src="../Poze/Eftenoiu.jpg" alt="Eftenoiu" />
+      </div>
+      <div class="player-name">Eftenoiu Catalin</div>
+	<div class="player-position">Test Engineer</div>
+    </div>
+  </div>
+  
+  <!-- Item 5 -->
+  <div class="item">
+    <div class="image-container">
+      <img src="../Poze/Display Assy L1.png" alt="FPK FA Linia 1" />
+      <div class="title">Display Assy L2</div>
+    </div>
+
+    <!-- Player inside item -->
+    <div class="player-container" data-id="12">
+      <div class="player-skill">CYBER SECURITY</div>
+      <div class="player-circle">
+        <img src="../Poze/Eftenoiu.jpg" alt="Eftenoiu" />
+      </div>
+      <div class="player-name">Eftenoiu Catalin</div>
+	  <div class="player-position">Test Engineer</div>
+    </div>
+  </div>
+  
+  <!-- Item 6 -->
+  <div class="item">
+    <div class="image-container">
+      <img src="../Poze/VS30 FA L1.png" alt="VS30 FA L1" />
+      <div class="title">VS30 FA L1</div>
+    </div>
+
+    <!-- Player inside item -->
+    <div class="player-container" data-id="7">
+      <div class="player-skill">FLASHING EXPERT</div>
+      <div class="player-circle">
+        <img src="../Poze/Culda.jpg" alt="Culda" />
+      </div>
+      <div class="player-name">Culda Vasile</div>
+	  <div class="player-position">Test Engineer</div>
+    </div>
+  </div>
+  
+  <!-- Item 7 -->
+  <div class="item">
+    <div class="image-container">
+      <img src="../Poze/Fiat 500 BEV FA.png" alt="Fiat 500 BEV FA" />
+      <div class="title">Fiat 500 BEV FA</div>
+    </div>
+
+    <!-- Player inside item -->
+    <div class="player-container" data-id="13">
+      <div class="player-skill">FLASHING EXPERT</div>
+      <div class="player-circle">
+        <img src="../Poze/Culda.jpg" alt="Culda" />
+      </div>
+      <div class="player-name">Culda Vasile</div>
+	  <div class="player-position">Test Engineer</div>
+    </div>
+  </div>
+  
+  <!-- Item 8 -->
+  <div class="item">
+    <div class="image-container">
+      <img src="../Poze/Fiat 500 BEV FA.png" alt="Fiat 356 FA" />
+      <div class="title">Fiat 356 FA</div>
+    </div>
+
+    <!-- Player inside item -->
+    <div class="player-container" data-id="2">
+      <div class="player-circle">
+        <img src="../Poze/Sferle.jpg" alt="Sferle" />
+      </div>
+      <div class="player-name">Sferle Flavius</div>
+	  <div class="player-position">Test Engineer</div>
+    </div>
+  </div>
+  
+  <!-- Item 9 -->
+  <div class="item">
+    <div class="image-container">
+      <img src="../Poze/Fiat 500 BEV FA.png" alt="Fiat 356 FDC FA" />
+      <div class="title">Fiat 356 FDC FA</div>
+    </div>
+
+    <!-- Player inside item -->
+    <div class="player-container" data-id="12">
+      <div class="player-skill">CYBER SECURITY</div>
+      <div class="player-circle">
+        <img src="../Poze/Eftenoiu.jpg" alt="Eftenoiu" />
+      </div>
+      <div class="player-name">Eftenoiu Catalin</div>
+	  <div class="player-position">Test Engineer</div>
+    </div>
+  </div>
+  
+  <!-- Item 10 -->
+  <div class="item">
+    <div class="image-container">
+      <img src="../Poze/BMW_AZV.png" alt="DCS" />
+      <div class="title">DCS</div>
+    </div>
+
+    <!-- Player inside item -->
+    <div class="player-container" data-id="3">
+      <div class="player-skill">SW ENGINEER</div>
+      <div class="player-circle">
+        <img src="../Poze/Izabella.jpg" alt="Izabella" />
+      </div>
+      <div class="player-name">Popescu Izabela</div>
+	  <div class="player-position">Test Engineer</div>
+    </div>
+  </div>
+  
+  <!-- Item 11 -->
+  <div class="item">
+    <div class="image-container">
+      <img src="../Poze/BMW_AZV.png" alt="LGE" />
+      <div class="title">LG</div>
+    </div>
+
+    <!-- Player inside item -->
+    <div class="player-container" data-id="16">
+      <div class="player-skill">SW ENGINEER</div>
+      <div class="player-circle">
+        <img src="../Poze/Izabella.jpg" alt="Izabella" />
+      </div>
+      <div class="player-name">Popescu Izabela</div>
+	  <div class="player-position">Test Engineer</div>
+    </div>
+  </div>
+  
+  <!-- Item 12 -->
+  <div class="item">
+    <div class="image-container">
+      <img src="../Poze/BMW_AZV.png" alt="I-CAM" />
+      <div class="title">I-CAM</div>
+    </div>
+
+    <!-- Player inside item -->
+    <div class="player-container" data-id="8">
+      <div class="player-skill">HW ENGINEER</div>
+      <div class="player-circle">
+        <img src="../Poze/Todorescu.jpg" alt="Todorescu" />
+      </div>
+      <div class="player-name">Todorescu Sergius</div>
+		<div class="player-position">Test Engineer</div>
+    </div>
+  </div>
+  
+  <!-- Item 13 -->
+  <div class="item">
+    <div class="image-container">
+      <img src="../Poze/BMW_AZV.png" alt="U25" />
+      <div class="title">U25</div>
+    </div>
+
+    <!-- Player inside item -->
+    <div class="player-container" data-id="9">
+      <div class="player-skill">HW ENGINEER</div>
+      <div class="player-circle">
+        <img src="../Poze/Todorescu.jpg" alt="Todorescu" />
+      </div>
+      <div class="player-name">Todorescu Sergius</div>
+		<div class="player-position">Test Engineer</div>
+    </div>
+  </div>
+  
+  <!-- Item 14 -->
+  <div class="item">
+    <div class="image-container">
+      <img src="../Poze/Spare.png" alt="Spare Lines" />
+      <div class="title">Spare Lines</div>
+    </div>
+
+    <!-- Player inside item -->
+    <div class="player-container" data-id="14">
+      <div class="player-skill">FLASHING EXPERT</div>
+      <div class="player-circle">
+        <img src="../Poze/Culda.jpg" alt="Culda" />
+      </div>
+      <div class="player-name">Culda Vasile</div>
+	  <div class="player-position">Test Engineer</div>
+    </div>
+  </div>
+
+<div class="item">
+    <div class="image-container">
+      <img src="../Poze/Spare.png" alt="Spare Lines" />
+      <div class="title">Spare Lines</div>
+    </div>
+
+    <!-- Player inside item -->
+    <div class="player-container" data-id="15">
+      <div class="player-circle">
+        <img src="../Poze/Sferle.jpg" alt="Sferle" />
+      </div>
+      <div class="player-name">Sferle Flavius</div>
+	  <div class="player-position">Test Engineer</div>
+    </div>
+  </div>
+  
+  <!-- Item 15 -->
+  <div class="item">
+    <div class="image-container">
+      <img src="../Poze/support.png" alt="Suport Engineering" />
+      <div class="title">Suport Engineering</div>
+    </div>
+
+    <!-- Player inside item -->
+    <div class="player-container" data-id="5">
+      <div class="player-circle">
+        <img src="../Poze/Raul.jpg" alt="Raul" />
+      </div>
+      <div class="player-name">Stanescu Raul</div>
+	  <div class="player-position">Internship Test Engineer</div>
+    </div>
+  </div>
+  
+  <!-- Item 16 -->
+  <div class="item">
+    <div class="image-container">
+      <img src="../Poze/support.png" alt="Suport Engineering" />
+      <div class="title">Suport Engineering</div>
+    </div>
+
+    <!-- Player inside item -->
+    <div class="player-container" data-id="1">
+      <div class="player-circle">
+        <img src="../Poze/Bocse.jpg" alt="Bocse" />
+      </div>
+      <div class="player-name">Ienciu Alex</div>
+	  <div class="player-position">Internship Test Engineer</div>
+    </div>
+  </div>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <script>
+    let dragged = null;
+    let offsetX = 0, offsetY = 0;
+
+    const containers = document.querySelectorAll(".player-container");
+
+    containers.forEach(container => {
+     
+
+      container.addEventListener("dblclick", () => {
+        const id = container.getAttribute("data-id");
+        const paths = {
+          "1": "Ienciu/IenciuBocse.html",
+          "2": "Sferle/SferleFlavius.html",
+          "3": "Popescu/PopescuIzabela.html",
+          "4": "Vasileniuc/VasileniucGheorghe.html",
+          "5": "Stanescu/StanescuRaul.html",
+          "6": "Eftenoiu/EftenoiuCatalin.html",
+          "7": "Culda/CuldaVasile.html",
+          "8": "Todorescu/TodorescuSergius.html",
+          "9": "Todorescu/TodorescuSergius.html",
+          "10": "Vasileniuc/VasileniucGheorghe.html",
+          "11": "Vasileniuc/VasileniucGheorghe.html",
+          "12": "Eftenoiu/EftenoiuCatalin.html",
+          "13": "Culda/CuldaVasile.html",
+          "14": "Culda/CuldaVasile.html",
+          "15": "Sferle/SferleFlavius.html",
+          "16": "Popescu/PopescuIzabela.html"
+		  
+		  
+          // Adaugă aici alți angajați după caz
+        };
+        if (paths[id]) {
+          window.location.href = paths[id];
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>

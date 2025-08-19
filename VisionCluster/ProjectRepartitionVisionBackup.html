@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Split Page</title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #5A3ABF, #D13C8A, #FF4C1F, #FF5E1F, #FFD200);
+      position: relative;
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
+      background-size: 400% 400%;
+      animation: gradientShift 15s ease infinite;
+      overflow-y: auto;
+    }
+
+    @keyframes gradientShift {
+      0% {
+        background-position: 0% 50%;
+      }
+      50% {
+        background-position: 100% 50%;
+      }
+      100% {
+        background-position: 0% 50%;
+      }
+    }
+
+
+    .wrapper {
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      overflow-y: auto;
+    }
+
+    .container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      padding: 20px;
+      align-items: center;
+    }
+
+    .item {
+      width: 480px;
+      height: 460px;
+      margin: 15px;
+      backdrop-filter: blur(5px);
+      background-color: rgba(255, 255, 255, 0.3);
+      border-radius: 60px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      font-size: 16px;
+      font-weight: bold;
+      color: #333;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .image-container{
+      width: 100%;
+      height: 100%;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      padding-top: 20px;
+    }
+
+    .image-container img {
+      width: 100%;
+      height: auto;
+      max-height: 190px;
+      object-fit: contain;
+    }
+
+    .title {
+      position: absolute;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 30px;
+      font-weight: bold;
+      color: #ffffff;
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+    }
+
+    .player-container {
+      position: absolute;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      transition: transform 0.3s ease;
+      cursor: grab;
+    }
+
+    .player-container:hover {
+      transform: scale(1.1);
+    }
+
+    .player-circle {
+      width: 170px;
+      height: 170px;
+      border-radius: 50%;
+      overflow: hidden;
+      background-color: rgba(255, 255, 255, 0.3);
+      backdrop-filter: blur(8px);
+      border: 4px solid white;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.4);
+    }
+
+    .player-circle img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 50%;
+    }
+
+    .player-name {
+      margin-top: 10px;
+      font-size: 20px;
+      font-weight: bold;
+      color: white;
+      text-shadow: 1px 1px 3px black;
+      text-align: center;
+    }
+
+    .project-link,
+    .project-link1 {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 24px;
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      background-color: rgba(0, 0, 0, 0.5);
+      padding: 10px 20px;
+      border-radius: 10px;
+      z-index: 999;
+    }
+
+    .project-link {
+      bottom: 20px;
+    }
+
+    .project-link1 {
+      top: 20px;
+    }
+
+    .project-link:hover,
+    .project-link1:hover {
+      background-color: rgba(0, 0, 0, 0.7);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="wrapper">
+    <a href="ProjectBKPRepartitionVision.html" class="project-link1">ProjectBKPRepartitionVision</a>
+    <a href="..\Index.html" class="project-link">Home</a>
+
+    <div class="container">
+      <!-- Lista proiecte -->
+      <div class="item"><div class="image-container"><img src="../Poze/FPK FA Linia 1.png" alt="FPK FA Linia 1" /><div class="title">FPK FA Linia 1</div></div></div>
+      <div class="item"><div class="image-container"><img src="../Poze/FPK FA Linia 2.png" alt="FPK FA Linia 2" /><div class="title">FPK FA Linia 2</div></div></div>
+      <div class="item"><div class="image-container"><img src="../Poze/FPK FA Linia 3.png" alt="FPK FA Linia 3" /><div class="title">FPK FA Linia 3</div></div></div>
+      <div class="item"><div class="image-container"><img src="../Poze/Display Assy L1.png" alt="Display Assy L1" /><div class="title">Display Assy L1</div></div></div>
+      <div class="item"><div class="image-container"><img src="../Poze/Display Assy L1.png" alt="Display Assy L2" /><div class="title">Display Assy L2</div></div></div>
+      <div class="item"><div class="image-container"><img src="../Poze/VS30 FA L1.png" alt="VS30 FA L1" /><div class="title">VS30 FA L1</div></div></div>
+      <div class="item"><div class="image-container"><img src="../Poze/Fiat 500 BEV FA.png" alt="Fiat 500 BEV FA" /><div class="title">Fiat 500 BEV FA</div></div></div>
+      <div class="item"><div class="image-container"><img src="../Poze/Fiat 500 BEV FA.png" alt="Fiat 356 FDC FA" /><div class="title">Fiat 356 FDC FA</div></div></div>
+      <div class="item"><div class="image-container"><img src="../Poze/Fiat 500 BEV FA.png" alt="Fiat 356 FA" /><div class="title">Fiat 356 FA</div></div></div>
+      <div class="item"><div class="image-container"><img src="../Poze/BMW_AZV.png" alt="DCS" /><div class="title">DCS</div></div></div>
+      <div class="item"><div class="image-container"><img src="../Poze/BMW_AZV.png" alt="I-CAM" /><div class="title">I-CAM</div></div></div>
+      <div class="item"><div class="image-container"><img src="../Poze/BMW_AZV.png" alt="U25" /><div class="title">U25</div></div></div>
+      <div class="item"><div class="image-container"><img src="../Poze/Spare.png" alt="Spare Lines" /><div class="title">Spare Lines</div></div></div>
+      <div class="item"><div class="image-container"><img src="../Poze/support.png" alt="Suport Engineering All Lines" /><div class="title">Suport Engineering All Lines</div></div></div>
+	  <div class="item"><div class="image-container"><img src="../Poze/BMW_AZV.png" alt="DCS" /><div class="title">LG</div></div></div>
+    </div>
+  </div>
+
+  <!-- Playeri -->
+  <div class="player-container" data-id="1" style="top: 100px; left: 100px;">
+    <div class="player-circle">
+      <img src="../Poze/Bocse.jpg" alt="Bocse" />
+    </div>
+    <div class="player-name">Ienciu-Bocse Alexandru</div>
+  </div>
+
+  <div class="player-container" data-id="2" style="top: 200px; left: 200px;">
+    <div class="player-circle">
+      <img src="../Poze/Sferle.jpg" alt="Sferle" />
+    </div>
+    <div class="player-name">Sferle Flavius</div>
+  </div>
+
+  <div class="player-container" data-id="15" style="top: 200px; left: 200px;">
+    <div class="player-circle">
+      <img src="../Poze/Sferle.jpg" alt="Sferle" />
+    </div>
+    <div class="player-name">Sferle Flavius</div>
+  </div>
+  
+  <div class="player-container" data-id="3" style="top: 300px; left: 300px;">
+    <div class="player-circle">
+      <img src="../Poze/Izabella.jpg" alt="Popescu" />
+    </div>
+    <div class="player-name">Popescu Izabela</div>
+  </div>
+  
+  <div class="player-container" data-id="4" style="top: 400px; left: 400px;">
+    <div class="player-circle">
+      <img src="../Poze/Vasileniuc.jpg" alt="Vasileniuc" />
+    </div>
+    <div class="player-name">Vasileniuc Gheorghe</div>
+  </div>
+
+  <div class="player-container" data-id="10" style="top: 400px; left: 400px;">
+    <div class="player-circle">
+      <img src="../Poze/Vasileniuc.jpg" alt="Vasileniuc" />
+    </div>
+    <div class="player-name">Vasileniuc Gheorghe</div>
+  </div>
+
+  <div class="player-container" data-id="11" style="top: 400px; left: 400px;">
+    <div class="player-circle">
+      <img src="../Poze/Vasileniuc.jpg" alt="Vasileniuc" />
+    </div>
+    <div class="player-name">Vasileniuc Gheorghe</div>
+  </div>
+  
+  <div class="player-container" data-id="5" style="top: 500px; left: 500px;">
+    <div class="player-circle">
+      <img src="../Poze/Raul.jpg" alt="Stanescu" />
+    </div>
+    <div class="player-name">Stanescu Raul</div>
+  </div>
+  
+  <div class="player-container" data-id="6" style="top: 500px; left: 500px;">
+    <div class="player-circle">
+      <img src="../Poze/Eftenoiu.jpg" alt="Eftenoiu" />
+    </div>
+    <div class="player-name">Catalin Eftenoiu</div>
+  </div>
+
+  <div class="player-container" data-id="12" style="top: 500px; left: 500px;">
+    <div class="player-circle">
+      <img src="../Poze/Eftenoiu.jpg" alt="Eftenoiu" />
+    </div>
+    <div class="player-name">Catalin Eftenoiu</div>
+  </div>
+  
+  <div class="player-container" data-id="7" style="top: 500px; left: 500px;">
+    <div class="player-circle">
+      <img src="../Poze/Culda.jpg" alt="Culda" />
+    </div>
+    <div class="player-name">Vasile Culda</div>
+  </div>
+
+  <div class="player-container" data-id="13" style="top: 500px; left: 500px;">
+    <div class="player-circle">
+      <img src="../Poze/Culda.jpg" alt="Culda" />
+    </div>
+    <div class="player-name">Vasile Culda</div>
+  </div>
+
+  <div class="player-container" data-id="14" style="top: 500px; left: 500px;">
+    <div class="player-circle">
+      <img src="../Poze/Culda.jpg" alt="Culda" />
+    </div>
+    <div class="player-name">Vasile Culda</div>
+  </div>
+  
+  <div class="player-container" data-id="8" style="top: 500px; left: 500px;">
+    <div class="player-circle">
+      <img src="../Poze/Todorescu.jpg" alt="Todorescu" />
+    </div>
+    <div class="player-name">Todorescu Sergius</div>
+  </div>
+  
+  <div class="player-container" data-id="9" style="top: 500px; left: 500px;">
+    <div class="player-circle">
+      <img src="../Poze/Todorescu.jpg" alt="Todorescu" />
+    </div>
+    <div class="player-name">Todorescu Sergius</div>
+  </div>
+
+  <script>
+    let dragged = null;
+    let offsetX = 0, offsetY = 0;
+
+    const containers = document.querySelectorAll(".player-container");
+
+    containers.forEach(container => {
+      const id = container.getAttribute("data-id");
+      const saved = JSON.parse(localStorage.getItem("dragPos_" + id));
+      if (saved) {
+        container.style.left = saved.left;
+        container.style.top = saved.top;
+      }
+
+      container.addEventListener("mousedown", (e) => {
+        dragged = container;
+        offsetX = e.offsetX;
+        offsetY = e.offsetY;
+        dragged.style.cursor = "grabbing";
+      });
+
+      document.addEventListener("mousemove", (e) => {
+        if (dragged) {
+          dragged.style.left = `${e.pageX - offsetX}px`;
+          dragged.style.top = `${e.pageY - offsetY}px`;
+        }
+      });
+
+      document.addEventListener("mouseup", () => {
+        if (dragged) {
+          const id = dragged.getAttribute("data-id");
+          localStorage.setItem("dragPos_" + id, JSON.stringify({
+            left: dragged.style.left,
+            top: dragged.style.top
+          }));
+          dragged.style.cursor = "grab";
+          dragged = null;
+        }
+      });
+
+      container.addEventListener("dblclick", () => {
+        const id = container.getAttribute("data-id");
+        const paths = {
+          "1": "Ienciu/IenciuBocse.html",
+          "2": "Sferle/SferleFlavius.html",
+		  "3": "Popescu/PopescuIzabela.html",
+		  "4": "Vasileniuc/VasileniucGheorghe.html",
+		  "5": "Stanescu/StanescuRaul.html",
+		  "6": "Eftenoiu/EftenoiuCatalin.html",
+		  "7": "Culda/CuldaVasile.html",
+		  "8": "Todorescu/TodorescuSergius.html",
+		  "9": "Todorescu/TodorescuSergius.html",
+		  "10": "Vasileniuc/VasileniucGheorghe.html",
+		  "11": "Vasileniuc/VasileniucGheorghe.html",
+		  "12": "Eftenoiu/EftenoiuCatalin.html",
+		  "13": "Culda/CuldaVasile.html",
+		  "14": "Culda/CuldaVasile.html",
+		  "15": "Sferle/SferleFlavius.html"
+		  
+          // Adaugă aici alți angajați după caz
+        };
+        if (paths[id]) {
+          window.location.href = paths[id];
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>

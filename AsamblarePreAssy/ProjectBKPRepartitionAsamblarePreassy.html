@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Split Page</title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+    }
+
+    body {
+	  font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #5A3ABF, #D13C8A, #FF4C1F, #FF5E1F, #FFD200);
+      overflow: hidden;
+      position: relative;
+    }
+
+   
+
+
+    .wrapper {
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      overflow-y: auto;
+    }
+
+    .container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      padding: 20px;
+      align-items: center;
+    }
+
+    .item {
+      width: 480px;
+      height: 550px;
+      margin: 15px;
+      backdrop-filter: blur(5px);
+      background-color: rgba(255, 255, 255, 0.3);
+      border-radius: 60px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      font-size: 16px;
+      font-weight: bold;
+      color: #333;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .image-container{
+      width: 100%;
+      height: 100%;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      padding-top: 20px;
+    }
+
+    .image-container img {
+      width: 100%;
+      height: auto;
+      max-height: 190px;
+      object-fit: contain;
+    }
+
+    .title {
+      position: absolute;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 30px;
+      font-weight: bold;
+      color: #ffffff;
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+    }
+
+    .player-container {
+      position: absolute;
+	  margin-top: 120px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      transition: transform 0.3s ease;
+      cursor: grab;
+    }
+
+    .player-container:hover {
+      transform: scale(1.1);
+    }
+
+    .player-circle {
+      width: 170px;
+      height: 170px;
+      border-radius: 50%;
+      overflow: hidden;
+      background-color: rgba(255, 255, 255, 0.3);
+      backdrop-filter: blur(8px);
+      border: 4px solid white;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.4);
+    }
+
+    .player-circle img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 50%;
+    }
+
+    .player-name {
+      margin-top: 10px;
+      font-size: 20px;
+      font-weight: bold;
+      color: white;
+      text-shadow: 1px 1px 3px black;
+      text-align: center;
+    }
+	
+	.player-position {
+	  font-size: 20px;
+	  color: white;
+	  margin-top: 2px;
+	  opacity: 0;
+	  transition: opacity 0.3s ease;
+	  text-shadow: 1px 1px 3px black;
+	}
+	
+	.player-container:hover .player-position {
+	opacity: 1;
+	}
+
+    .project-link,
+    .project-link1 {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 24px;
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      background-color: rgba(0, 0, 0, 0.5);
+      padding: 10px 20px;
+      border-radius: 10px;
+      z-index: 999;
+    }
+
+    .project-link {
+      bottom: 20px;
+    }
+
+    .project-link1 {
+      top: 20px;
+    }
+
+    .project-link:hover,
+    .project-link1:hover {
+      background-color: rgba(0, 0, 0, 0.7);
+    }
+  </style>
+</head>
+<body>
+
+<div class="wrapper">
+    <a href="ProjectBKPRepartitionAsamblarePreassy.html" class="project-link1">ProjectBKPRepartitionVision</a>
+    <a href="..\Index.html" class="project-link">Home</a>
+
+<div class="container">
+    <!-- Item 1 -->
+<div class="item">
+    <div class="image-container">
+      <img src="../Poze/BMW_AZV.png" alt="DCS" />
+      <div class="title">BMW HIGH 4</div>
+    </div>
+
+    <!-- Player inside item -->
+    <div class="player-container" data-id="1">
+      <div class="player-circle">
+        <img src="../Poze/Rus.jpg" alt="Rus" />
+      </div>
+      <div class="player-name">Rus Ciprian</div>
+	  <div class="player-position">Process Engineer</div>
+    </div>
+  </div>
+  
+  <!-- Item 2 -->
+ <div class="item">
+    <div class="image-container">
+      <img src="../Poze/BMW_AZV.png" alt="DCS" />
+      <div class="title">BMW DCS</div>
+    </div>
+
+    <!-- Player inside item -->
+    <div class="player-container" data-id="2">
+      <div class="player-circle">
+        <img src="../Poze/Ciolac.jpg" alt="Ciolac" />
+      </div>
+      <div class="player-name">Ciolac Marius</div>
+	  <div class="player-position">Process Engineer</div>
+    </div>
+  </div>
+  
+  <!-- Item 3 -->
+  <div class="item">
+    <div class="image-container">
+      <img src="../Poze/BMW_AZV.png" alt="DCS" />
+      <div class="title">BMW ICAM</div>
+    </div>
+
+    <!-- Player inside item -->
+    <div class="player-container" data-id="6">
+      <div class="player-circle">
+        <img src="../Poze/Tudose.jpg" alt="Tudose" />
+      </div>
+      <div class="player-name">Tudose Alexandru</div>
+	  <div class="player-position">Process Engineer</div>
+    </div>
+  </div>
+  
+  <!-- Item 4 -->
+  <div class="item">
+    <div class="image-container">
+      <img src="../Poze/Fiat 500 BEV FA.png" alt="Fiat 500 BEV FA" />
+      <div class="title">Fiat 500</div>
+    </div>
+
+    <!-- Player inside item -->
+    <div class="player-container" data-id="3">
+      <div class="player-circle">
+        <img src="../Poze/Smeu.jpg" alt="Smeu" />
+      </div>
+      <div class="player-name">Victor Smeu</div>
+	  <div class="player-position">Process Engineer</div>
+    </div>
+  </div>
+  
+  <!-- Item 5 -->
+  <div class="item">
+    <div class="image-container">
+      <img src="../Poze/BMW_AZV.png" alt="DCS" />
+      <div class="title">PGU</div>
+    </div>
+
+    <!-- Player inside item -->
+    <div class="player-container" data-id="4">
+      <div class="player-circle">
+        <img src="../Poze/Rosu.jpg" alt="Rosu" />
+      </div>
+      <div class="player-name">Rosu Adrian</div>
+    </div>
+  </div>
+  
+  <!-- Item 6 -->
+  <div class="item">
+    <div class="image-container">
+      <img src="../Poze/" alt="" />
+      <div class="title">Hybrid Bonding</div>
+    </div>
+
+    <!-- Player inside item -->
+    <div class="player-container" data-id="3">
+      <div class="player-circle">
+        <img src="../Poze/Smeu.jpg" alt="Smeu" />
+      </div>
+      <div class="player-name">Victor Smeu</div>
+	  <div class="player-position">Process Engineer</div>
+    </div>
+  </div>
+  
+  <!-- Item 7 -->
+  <div class="item">
+    <div class="image-container">
+      <img src="../Poze/FPK FA Linia 1.png" alt="FPK FA Linia 1" />
+      <div class="title">FPK Bonding</div>
+    </div>
+
+    <!-- Player inside item -->
+    <div class="player-container" data-id="2">
+      <div class="player-circle">
+        <img src="../Poze/Ciolac.jpg" alt="Ciolac" />
+      </div>
+      <div class="player-name">Ciolac Marius</div>
+	  <div class="player-position">Process Engineer</div>
+    </div>
+  </div>
+  
+  <!-- Item 8 -->
+ <div class="item">
+    <div class="image-container">
+      <img src="../Poze/" alt="FPK FA Linia 1" />
+      <div class="title">Shield Inseration</div>
+    </div>
+
+    <!-- Player inside item -->
+    <div class="player-container" data-id="5">
+      <div class="player-circle">
+        <img src="../Poze/Cimpan.jpg" alt="Cimpan" />
+      </div>
+      <div class="player-name">Cimpan Florin</div>
+	  <div class="player-position">Process Engineer</div>
+    </div>
+  </div>
+  
+  <!-- Item 9 -->
+  <div class="item">
+    <div class="image-container">
+      <img src="../Poze/" alt="FPK FA Linia 1" />
+      <div class="title">Milling</div>
+    </div>
+
+    <!-- Player inside item -->
+    <div class="player-container" data-id="1">
+      <div class="player-circle">
+        <img src="../Poze/Rus.jpg" alt="Rus" />
+      </div>
+      <div class="player-name">Rus Ciprian</div>
+	  <div class="player-position">Process Engineer</div>
+    </div>
+  </div>
+  
+  <!-- Item 10 -->
+  <div class="item">
+    <div class="image-container">
+      <img src="../Poze/" alt="FPK FA Linia 1" />
+      <div class="title">Top Cover</div>
+    </div>
+
+    <!-- Player inside item -->
+    <div class="player-container" data-id="4">
+      <div class="player-circle">
+        <img src="../Poze/Rosu.jpg" alt="Rosu" />
+      </div>
+      <div class="player-name">Rosu Adrian</div>
+	  <div class="player-position">Process Engineer</div>
+    </div>
+  </div>
+  
+  <!-- Item 11 -->
+   <div class="item">
+    <div class="image-container">
+      <img src="../Poze/" alt="FPK FA Linia 1" />
+      <div class="title">HotMelt 1 and 2</div>
+    </div>
+
+    <!-- Player inside item -->
+    <div class="player-container" data-id="3">
+      <div class="player-circle">
+        <img src="../Poze/Smeu.jpg" alt="Smeu" />
+      </div>
+      <div class="player-name">Smeu Victor</div>
+	  <div class="player-position">Process Engineer</div>
+    </div>
+  </div>
+  
+  <!-- Item 12 -->
+  <div class="item">
+    <div class="image-container">
+      <img src="../Poze/" alt="FPK FA Linia 1" />
+      <div class="title">WP0.1 and 2</div>
+    </div>
+
+    <!-- Player inside item -->
+    <div class="player-container" data-id="6">
+      <div class="player-circle">
+        <img src="../Poze/Tudose.jpg" alt="Tudose" />
+      </div>
+      <div class="player-name">Tudose Alexandru</div>
+	  <div class="player-position">Process Engineer</div>
+    </div>
+  </div>
+  
+  <!-- Item 13 -->
+  <div class="item">
+    <div class="image-container">
+      <img src="../Poze/" alt="FPK FA Linia 1" />
+      <div class="title">Rivering 1,2,3</div>
+    </div>
+
+    <!-- Player inside item -->
+    <div class="player-container" data-id="2">
+      <div class="player-circle">
+        <img src="../Poze/Ciolac.jpg" alt="Ciolac" />
+      </div>
+      <div class="player-name">Ciolac Marius</div>
+	  <div class="player-position">Process Engineer</div>
+    </div>
+  </div>
+  
+  <!-- Item 14 -->
+   <div class="item">
+    <div class="image-container">
+      <img src="../Poze/" alt="FPK FA Linia 1" />
+      <div class="title">ToolShop</div>
+    </div>
+
+    <!-- Player inside item -->
+    <div class="player-container" data-id="5">
+      <div class="player-circle">
+        <img src="../Poze/Cimpan.jpg" alt="Cimpan" />
+      </div>
+      <div class="player-name">Campan Florin</div>
+	  <div class="player-position">Process Engineer</div>
+    </div>
+  </div>
+  
+  <!-- Item 15 -->
+  
+  
+  <!-- Item 16 -->
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <script>
+    let dragged = null;
+    let offsetX = 0, offsetY = 0;
+
+    const containers = document.querySelectorAll(".player-container");
+
+    containers.forEach(container => {
+     
+
+      container.addEventListener("dblclick", () => {
+        const id = container.getAttribute("data-id");
+        const paths = {
+          "1": "Rus/RusCiprian.html",
+          "2": "Ciolac/CiolacMarius.html",
+		  "3": "Smeu/SmeuVictor.html",
+		  "4": "Rosu/RosuAdrian.html",
+		  "5": "Cimpan/CimpanFlorin.html",
+		  "6": "Tudose/TudoseAlexandru.html",
+		  
+		  
+		  
+          // Adaugă aici alți angajați după caz
+        };
+        if (paths[id]) {
+          window.location.href = paths[id];
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>

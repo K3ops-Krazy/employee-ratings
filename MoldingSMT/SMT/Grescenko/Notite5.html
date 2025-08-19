@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cunostinte Notes</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        #editor {
+            width: 100%;
+            height: 500px;
+            border: 1px solid #ccc;
+            padding: 10px;
+            font-size: 16px;
+            background-color: #f9f9f9;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Notes for Cunostinte</h1>
+    <textarea id="editor" placeholder="Start typing your text..."></textarea>
+
+    <script>
+        // Unique key for localStorage
+        const storageKey = 'Notite5Content';
+
+        // Load the text from localStorage
+        document.getElementById('editor').value = localStorage.getItem(storageKey) || '';
+
+        // Save the text to localStorage whenever it changes
+        document.getElementById('editor').addEventListener('input', function() {
+            localStorage.setItem(storageKey, this.value);
+        });
+    </script>
+</body>
+</html>

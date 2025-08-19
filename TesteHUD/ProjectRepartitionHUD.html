@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Split Page</title>
+<style>
+html {
+  scroll-behavior: smooth;
+}
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+    }
+
+h1 {
+  font-size: 70px;
+  color: white;
+  text-align: center;
+  margin: 40px 0 20px;
+}
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #5A3ABF, #D13C8A, #FF4C1F, #FF5E1F, #FFD200);
+      overflow: hidden;
+      position: relative;
+    }
+
+    .wrapper {
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      overflow-y: auto;
+    }
+
+    .container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      padding: 20px;
+      align-items: center;
+    }
+
+    .item {
+      width: 480px;
+      height: 530px;
+      margin: 15px;
+      backdrop-filter: blur(5px);
+      background-color: rgba(255, 255, 255, 0.3);
+      border-radius: 60px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      font-size: 16px;
+      font-weight: bold;
+      color: #333;
+      overflow: hidden;
+      position: relative;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+    .item:hover {
+     transform: scale(1.05);
+     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+    }
+
+    .image-container{
+      width: 100%;
+      height: 100%;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      padding-top: 20px;
+    }
+
+    .image-container img {
+      width: 100%;
+      height: auto;
+      max-height: 190px;
+      object-fit: contain;
+      border-radius: 20px;
+    }
+
+    .title {
+      position: absolute;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 30px;
+      font-weight: bold;
+      color: #ffffff;
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+    }
+
+    .player-container {
+      position: absolute;
+	  margin-top: 140px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      transition: transform 0.3s ease;
+      cursor: grab;
+    }
+
+    .player-container:hover {
+      transform: scale(1.1);
+    }
+
+    .player-circle {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      overflow: hidden;
+      background-color: rgba(255, 255, 255, 0.3);
+      backdrop-filter: blur(8px);
+      border: 4px solid white;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.4);
+    }
+
+    .player-circle img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 50%;
+    }
+
+    .player-name {
+      margin-top: 10px;
+      font-size: 20px;
+      font-weight: bold;
+      color: white;
+      text-shadow: 1px 1px 3px black;
+      text-align: center;
+    }
+	
+	.player-position {
+	  font-size: 20px;
+	  color: white;
+	  margin-top: 2px;
+	  opacity: 0;
+	  transition: opacity 0.3s ease;
+	  text-shadow: 1px 1px 3px black;
+	}
+	
+	.player-container:hover .player-position {
+	opacity: 1;
+	}
+
+	.top-bar {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 50px 60px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: rgba(255, 255, 255, 0.2); /* bară albă */
+  z-index: 1000;
+  backdrop-filter: blur(8px);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+
+.project-link,
+.project-link1 {
+  font-size: 30px;
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  background-color: transparent;
+  padding: 12px 24px;
+  border-radius: 12px;
+  border: 2px solid transparent;
+  transition: all 0.4s ease;
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.project-link:hover,
+.project-link1:hover {
+  background: linear-gradient(135deg, #5A3ABF, #D13C8A, #FF4C1F, #FFD200);
+  color: white;
+  background-size: 400% 400%;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  animation: gradientShift 5s ease infinite;
+}
+
+
+	.person {
+     position: absolute;
+     text-align: center;
+     width: 150px;
+    }
+	
+	
+
+  </style>
+</head>
+
+<body>
+<div class="wrapper">
+<div class="top-bar">
+      <a href="ProjectBKPRepartitionAssyTest.html" class="project-link">ProjectBKPRepartitionVision</a>
+      <a href="..\Index.html" class="project-link">Home</a>
+    </div>
+<div class="container">
+<!-- Item 1 -->
+<div class="item">
+<div class="image-container">
+<img alt="FPK FA Linia 1" src="../Poze/Display Assy L1.png"/>
+<div class="title">VW HUD L1</div>
+</div>
+<!-- Player inside item -->
+<div class="player-container" data-id="4">
+<div class="player-circle">
+<img alt="Milotin" src="../Poze/Milotin.jpg"/>
+</div>
+<div class="player-name">Milotin Catalin</div>
+<div class="player-position">Test Engineer</div>
+</div>
+</div>
+<div class="item">
+<div class="image-container">
+<img alt="FPK FA Linia 1" src="../Poze/Display Assy L1.png"/>
+<div class="title">VW HUD L2</div>
+</div>
+<!-- Player inside item -->
+<div class="player-container" data-id="4">
+<div class="player-circle">
+<img alt="Milotin" src="../Poze/Milotin.jpg"/>
+</div>
+<div class="player-name">Milotin Catalin</div>
+<div class="player-position">Test Engineer</div>
+</div>
+</div>
+<div class="item">
+<div class="image-container">
+<img alt="FPK FA Linia 1" src="../Poze/Display Assy L1.png"/>
+<div class="title">VW HUD L3</div>
+</div>
+<!-- Player inside item -->
+<div class="player-container" data-id="4">
+<div class="player-circle">
+<img alt="Milotin" src="../Poze/Milotin.jpg"/>
+</div>
+<div class="player-name">Milotin Catalin</div>
+<div class="player-position">Test Engineer</div>
+</div>
+</div>
+<!-- Item 2 -->
+<div class="item">
+<div class="image-container">
+<img alt="FPK FA Linia 2" src="../Poze/Display Assy L1.png"/>
+<div class="title">AUDI GEN 2</div>
+</div>
+<!-- Player inside item -->
+<div class="player-container" data-id="1">
+<div class="player-circle">
+<img alt="Bencsik" src="../Poze/Bencsik.jpg"/>
+</div>
+<div class="player-name">Bencsik Andrei</div>
+<div class="player-position">Test Engineer</div>
+</div>
+</div>
+<div class="item">
+<div class="image-container">
+<img alt="I-CAM" src="../Poze/BMW_AZV.png"/>
+<div class="title">BMW HIGH 4</div>
+</div>
+<!-- Player inside item -->
+<div class="player-container" data-id="7">
+<div class="player-circle">
+<img alt="Tatomir" src="../Poze/Tatomir.jpg"/>
+</div>
+<div class="player-name">Tatomir Adrian Emanoil</div>
+<div class="player-position">Test Engineer</div>
+</div>
+</div>
+<div class="item">
+<div class="image-container">
+<img alt="VS30 FA L1" src="../Poze/VS30 FA L1.png"/>
+<div class="title">MFA 2 HUD</div>
+</div>
+<!-- Player inside item -->
+<div class="player-container" data-id="8">
+<div class="player-circle">
+<img alt="Cherlia" src="../Poze/Cherlia.jpg"/>
+</div>
+<div class="player-name">Cherlia Gabriel</div>
+<div class="player-position">Test Engineer</div>
+</div>
+</div>
+<div class="item">
+<div class="image-container">
+<img alt="VS30 FA L1" src="../Poze/VS30 FA L1.png"/>
+<div class="title">HUD 206 L1</div>
+</div>
+<!-- Player inside item -->
+<div class="player-container" data-id="2">
+<div class="player-circle">
+<img alt="Cazan" src="../Poze/Cazan.jpg"/>
+</div>
+<div class="player-name">Cazan Sebastian Alin</div>
+<div class="player-position">Test Engineer</div>
+</div>
+</div>
+<div class="item">
+<div class="image-container">
+<img alt="VS30 FA L1" src="../Poze/VS30 FA L1.png"/>
+<div class="title">HUD 206 L2</div>
+</div>
+<!-- Player inside item -->
+<div class="player-container" data-id="2">
+<div class="player-circle">
+<img alt="Cazan" src="../Poze/Cazan.jpg"/>
+</div>
+<div class="player-name">Cazan Sebastian Alin</div>
+<div class="player-position">Test Engineer</div>
+</div>
+</div>
+<div class="item">
+<div class="image-container">
+<img alt="VS30 FA L1" src="../Poze/VS30 FA L1.png"/>
+<div class="title">HUD MMA</div>
+</div>
+<!-- Player inside item -->
+<div class="player-container" data-id="5">
+<div class="player-circle">
+<img alt="Nitu" src="../Poze/Nitu.jpg"/>
+</div>
+<div class="player-name">Nitu Alexandru</div>
+<div class="player-position">Test Engineer</div>
+</div>
+</div>
+<div class="item">
+<div class="image-container">
+<img alt="U25" src="../Poze/BMW_AZV.png"/>
+<div class="title">PGU L1</div>
+</div>
+<!-- Player inside item -->
+<div class="player-container" data-id="15">
+<div class="player-circle">
+<img alt="Nitu" src="../Poze/Nitu.jpg"/>
+</div>
+<div class="player-name">Nitu Alexandru</div>
+<div class="player-position">Test Engineer</div>
+</div>
+</div>
+<div class="item">
+<div class="image-container">
+<img alt="U25" src="../Poze/BMW_AZV.png"/>
+<div class="title">PGU L2</div>
+</div>
+<!-- Player inside item -->
+<div class="player-container" data-id="15">
+<div class="player-circle">
+<img alt="Nitu" src="../Poze/Nitu.jpg"/>
+</div>
+<div class="player-name">Nitu Alexandru</div>
+<div class="player-position">Test Engineer</div>
+</div>
+</div>
+<div class="item">
+<div class="image-container">
+<img alt="VS30 FA L1" src="../Poze/VS30 FA L1.png"/>
+<div class="title">Daimler MBEAM</div>
+</div>
+<!-- Player inside item -->
+<div class="player-container" data-id="3">
+<div class="player-circle">
+<img alt="Duta" src="../Poze/Duta.jpg"/>
+</div>
+<div class="player-name">Duta Mihail</div>
+<div class="player-position">Test Engineer</div>
+</div>
+</div>
+<div class="item">
+<div class="image-container">
+<img alt="Display Assy L1" src="../Poze/Display Assy L1.png"/>
+<div class="title">IDBUZZ FORD HUD</div>
+</div>
+<!-- Player inside item -->
+<div class="player-container" data-id="6">
+<div class="player-circle">
+<img alt="Plesa" src="../Poze/Plesa.jpg"/>
+</div>
+<div class="player-name">Plesa Daniel</div>
+<div class="player-position">Test Engineer</div>
+</div>
+</div>
+<div class="item">
+<div class="image-container">
+<img alt="DCS" src="../Poze/BMW_AZV.png"/>
+<div class="title">PSA</div>
+</div>
+<!-- Player inside item -->
+<div class="player-container" data-id="13">
+<div class="player-circle">
+<img alt="Cazan" src="../Poze/Cazan.jpg"/>
+</div>
+<div class="player-name">Cazan Sebastian Alin</div>
+<div class="player-position">Test Engineer</div>
+</div>
+</div>
+<div class="item">
+<div class="image-container">
+<img alt="Suport Engineering All Lines" src="../Poze/support.png"/>
+<div class="title">Suport Engineering </div>
+</div>
+<!-- Player inside item -->
+<div class="player-container" data-id="9">
+<div class="player-circle">
+<img alt="Narcisa" src="../Poze/Narcisa.jpg"/>
+</div>
+<div class="player-name">Ostrovan Narcisa</div>
+<div class="player-position">Internship Test Engineer</div>
+</div>
+</div>
+<div class="item">
+<div class="image-container">
+<img alt="Suport Engineering All Lines" src="../Poze/support.png"/>
+<div class="title">Suport Engineering </div>
+</div>
+<!-- Player inside item -->
+<div class="player-container" data-id="10">
+<div class="player-circle">
+<img alt="Nicola" src="../Poze/Nicola.jpg"/>
+</div>
+<div class="player-name">Nicola Ionut Alin</div>
+<div class="player-position">Internship Test Engineer</div>
+</div>
+</div>
+<div class="item">
+<div class="image-container">
+<img alt="Suport Engineering All Lines" src="../Poze/mecanic.png"/>
+<div class="title">Suport Engineering </div>
+</div>
+<!-- Player inside item -->
+<div class="player-container" data-id="11">
+<div class="player-circle">
+<img alt="Tanasa" src="../Poze/Tanasa.jpg"/>
+</div>
+<div class="player-name">Tanasa Florin Alexandru</div>
+<div class="player-position">Mechanic</div>
+</div>
+</div>
+
+</div></div><script>
+// ⭐ Star Rating System
+document.addEventListener("DOMContentLoaded", () => {
+  document.querySelectorAll('.player-container').forEach(container => {
+    const name = container.querySelector('.player-name')?.innerText.trim();
+    if (!name) return;
+
+    // Create star container
+    const starBox = document.createElement("div");
+    starBox.classList.add("stars");
+    for (let i = 1; i <= 5; i++) {
+      const star = document.createElement("span");
+      star.innerText = "★";
+      star.dataset.value = i;
+      starBox.appendChild(star);
+    }
+    container.appendChild(starBox);
+
+    const saved = localStorage.getItem(`rating-${name}`);
+    if (saved) {
+      starBox.querySelectorAll("span").forEach(star => {
+        if (+star.dataset.value <= +saved) star.classList.add("selected");
+      });
+    }
+
+    starBox.querySelectorAll("span").forEach(star => {
+      star.addEventListener("click", () => {
+        const rating = +star.dataset.value;
+        localStorage.setItem(`rating-${name}`, rating);
+        starBox.querySelectorAll("span").forEach(s => {
+          s.classList.toggle("selected", +s.dataset.value <= rating);
+        });
+      });
+    });
+  });
+});
+
+// ⭐ CSS for stars
+const style = document.createElement("style");
+style.textContent = `
+  .stars {
+    display: flex;
+    justify-content: center;
+    margin-top: 8px;
+    font-size: 20px;
+    color: gray;
+    cursor: pointer;
+  }
+  .stars span.selected {
+    color: gold;
+  }
+`;
+document.head.appendChild(style);
+
+// 🎯 Double Click Navigation
+let dragged = null;
+let offsetX = 0, offsetY = 0;
+
+const containers = document.querySelectorAll(".player-container");
+
+containers.forEach(container => {
+  container.addEventListener("dblclick", () => {
+    const id = container.getAttribute("data-id");
+    const paths = {
+      "1": "Bencsik/BencsikAndrei.html",
+      "2": "Cazan/CazanSebastianAlin.html",
+      "3": "Duta/DutaMihail.html",
+      "4": "Milotin/MilotinCatalin.html",
+      "5": "Nitu/NituAlexandru.html",
+      "6": "Plesa/PlesaDaniel.html",
+      "7": "Tatomir/TatomirAdrianEmanoil.html",
+      "8": "Cherlia/CherliaGabriel.html",
+      "9": "Narcisa/OstrovanNarcisa.html",
+      "10": "Nicola/NicolaIonutAlin.html",
+      "11": "Tanasa/TanasaFlorinAlexandru.html",
+      "12": "Bencsik/BencsikAndrei.html",
+      "13": "Cazan/CazanSebastianAlin.html",
+      "14": "Milotin/MilotinCatalin.html",
+      "15": "Nitu/NituAlexandru.html"
+    };
+    if (paths[id]) {
+      window.location.href = paths[id];
+    }
+  });
+});
+</script></body>
+</html>

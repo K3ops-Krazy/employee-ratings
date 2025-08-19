@@ -1,0 +1,686 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Test Engineer – ICT & FCT</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #5A3ABF, #D13C8A, #FF4C1F, #FF5E1F, #FFD200);
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    .org-chart {
+      display: flex;
+      height: calc(100vh - 40px);
+    }
+
+    .section {
+      flex: 1;
+      padding: 20px;
+      overflow-y: auto;
+      backdrop-filter: blur(6px);
+      background-color: rgba(0, 0, 0, 0.5);
+    }
+
+    .ict-section {
+      border-right: 2px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .section h2 {
+      text-align: center;
+      font-size: 24px;
+      margin-bottom: 20px;
+      border-bottom: 2px solid #fff;
+      padding-bottom: 10px;
+      color: #fff;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 30px;
+      justify-items: center;
+    }
+
+    
+	 .item {
+            width: 480px;
+            height:460px;
+            margin: 5px;
+            background-color: #ffffff;
+            border-radius: 5px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            font-size: 26px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .item img {
+            max-width: 50%;
+            max-height: 50%;
+            border-radius: 5px;
+        }
+
+
+    .title {
+      position: absolute;
+      bottom: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 16px;
+      font-weight: bold;
+      color: #fff;
+      text-shadow: 1px 1px 2px #000;
+      background: rgba(0, 0, 0, 0.4);
+      padding: 5px 10px;
+      border-radius: 5px;
+    }
+    .image-container {
+            position: relative;
+            width: 100%;
+            height: 100%;
+	    object-fit: cover;
+            border-radius: 5px;
+        }
+
+        .image-container img {
+            object-fit: cover;
+            border-radius: 5px;
+        }
+
+
+    .title {
+      font-size: 34px;
+      font-weight: bold;
+      text-align: center;
+    }
+
+    .player {
+      width: 140px;
+      height: 160px;
+      background-color: #ffff00;
+      border-radius: 20%;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      position: absolute;
+      cursor: grab;
+    }
+
+    .player img {
+      width: 90%;
+      height: 70%;
+      object-fit: cover;
+    }
+
+        .player-name {
+            height: 90%; /* Reserve space for the name */
+            font-size: 22px;
+            color: #000000;
+            text-align: center;
+            width: 100%;
+            box-sizing: border-box;
+            margin-top: 2px;
+        }
+
+    .footer {
+      height: 40px;
+      background-color: #111;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 30px;
+    }
+
+    .footer a,
+    .project-link,
+    .project-link1 {
+      color: #fff;
+      text-decoration: none;
+      font-weight: bold;
+      padding: 10px;
+      background-color: rgba(0, 0, 0, 0.5);
+      border-radius: 5px;
+    }
+
+    .footer a:hover,
+    .project-link:hover,
+    .project-link1:hover {
+      background-color: rgba(0, 0, 0, 0.7);
+    }
+
+    .project-link {
+      position: absolute;
+      bottom: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 10;
+    }
+
+    .project-link1 {
+      position: absolute;
+      top: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 10;
+    }
+  </style>
+</head>
+<body>
+<a href="ProjectBKPRepartitionAssyTest.html" class="project-link1">ProjectBKPRepartitionAssamblareTest</a>
+<a href="../Index.html" class="project-link">Home</a>
+
+<div class="org-chart">
+  <div class="section ict-section">
+    <h2>ICT AREA</h2>
+    <div class="grid">
+      <!-- Project 1 -->
+        <div class="item">
+            <div class="image-container">
+                <img src="../Poze\FPK FA Linia 1.jpg" alt="FPK FA Linia 1">
+                <div class="title">BMW HIGH 4 ICT</div>
+            </div>
+        </div>
+
+        <!-- Project 2 -->
+        <div class="item">
+            <div class="image-container">
+                <img src="../Poze\FPK FA Linia 2.jpg" alt="FPK FA Linia 2">
+                <div class="title">BMW U25 ICT</div>
+            </div>
+        </div>
+
+        <!-- Project 3 -->
+        <div class="item">
+            <div class="image-container">
+                <img src="../Poze\FPK FA Linia 3.jpg" alt="FPK FA Linia 3">
+                <div class="title">BMW DCS ICT</div>
+            </div>
+        </div>
+
+        <!-- Project 4 -->
+        <div class="item">
+            <div class="image-container">
+                <img src="../Poze\Display Assy L1.jpg" alt="Display Assy L1">
+                <div class="title">VW HUD MQB ICT</div>
+            </div>
+        </div>
+
+        <!-- Project 5 -->
+        <div class="item">
+            <div class="image-container">
+                <img src="../Poze\Display Assy L1.jpg" alt="Display Assy L2">
+                <div class="title">VW FPK ICT</div>
+            </div>
+        </div>
+
+        <!-- Project 6 -->
+        <div class="item">
+            <div class="image-container">
+                <img src="../Poze\VS30 FA L1.jpeg" alt="VS30 FA L1">
+                <div class="title">HUD 206 ICT</div>
+            </div>
+        </div>
+        <!-- Project 7 -->
+        <div class="item">
+            <div class="image-container">
+                <img src="../Poze\Fiat 500 BEV FA.jpg" alt="Fiat 500 BEV FA">
+                <div class="title">HUD MMA ICT</div>
+            </div>
+        </div>
+
+        <!-- Project 8 -->
+        <div class="item">
+            <div class="image-container">
+                <img src="../Poze\Fiat 500 BEV FA.jpg" alt="Fiat 356 FDC FA">
+                <div class="title">FIAT 500 ICT</div>
+            </div>
+        </div>
+
+        <!-- Project 9 -->
+        <div class="item">
+            <div class="image-container">
+                <img src="../Poze\Fiat 500 BEV FA.jpg" alt="Fiat 356 FA">
+                <div class="title">Fiat 356 ICT</div>
+            </div>
+        </div>
+
+        <!-- Project 10 -->
+        <div class="item">
+            <div class="image-container">
+                <img src="../Poze\BMW_AZV.jpg" alt="AZV DCS">
+                <div class="title">VS 30 ICT</div>
+            </div>
+        </div>
+
+        <!-- Project 11 -->
+        <div class="item">
+            <div class="image-container">
+                <img src="../Poze\BMW_AZV.jpg" alt="AZV I-CAM">
+                <div class="title">Audi Gen 2 ICT</div>
+            </div>
+        </div>
+	<!-- Project 13 -->
+        <div class="item">
+            <div class="image-container">
+                <img src="../Poze\BMW_AZV.jpg" alt="AZV U25">
+                <div class="title">Daimler MBEAM ICT</div>
+            </div>
+        </div>
+	 <!-- Project 14 -->
+        <div class="item">
+            <div class="image-container">
+                <img src="../Poze\BMW_AZV.jpg" alt="AZV U25">
+                <div class="title">IDBUZZ FORD HUD ICT</div>
+            </div>
+        </div>
+	 <!-- Project 15 -->
+        <div class="item">
+            <div class="image-container">
+                <img src="../Poze\BMW_AZV.jpg" alt="AZV U25">
+                <div class="title">PSA ICT</div>
+            </div>
+        </div>
+	<!-- Project 15 -->
+        <div class="item">
+            <div class="image-container">
+                <img src="../Poze\BMW_AZV.jpg" alt="AZV U25">
+                <div class="title">MFA 2 HUD ICT</div>
+            </div>
+        </div>
+	<!-- Project 15 -->
+        <div class="item">
+            <div class="image-container">
+                <img src="../Poze\BMW_AZV.jpg" alt="AZV U25">
+                <div class="title">I-CAM ICT</div>
+            </div>
+        </div>
+
+
+    </div>
+  </div>
+
+  <div class="section fct-section">
+    <h2>FCT AREA</h2>
+    <div class="grid">
+       <!-- Project 1 -->
+        <div class="item">
+            <div class="image-container">
+                <img src="../Poze\FPK FA Linia 1.jpg" alt="FPK FA Linia 1">
+                <div class="title">BMW HIGH 4 FCT</div>
+            </div>
+        </div>
+
+        <!-- Project 2 -->
+        <div class="item">
+            <div class="image-container">
+                <img src="../Poze\FPK FA Linia 2.jpg" alt="FPK FA Linia 2">
+                <div class="title">BMW U25 FCT</div>
+            </div>
+        </div>
+
+        <!-- Project 3 -->
+        <div class="item">
+            <div class="image-container">
+                <img src="../Poze\FPK FA Linia 3.jpg" alt="FPK FA Linia 3">
+                <div class="title">BMW DCS FCT</div>
+            </div>
+        </div>
+
+        <!-- Project 4 -->
+        <div class="item">
+            <div class="image-container">
+                <img src="../Poze\Display Assy L1.jpg" alt="Display Assy L1">
+                <div class="title">VW HUD MQB FCT</div>
+            </div>
+        </div>
+
+        <!-- Project 5 -->
+        <div class="item">
+            <div class="image-container">
+                <img src="../Poze\Display Assy L1.jpg" alt="Display Assy L2">
+                <div class="title">VW FPK FCT</div>
+            </div>
+        </div>
+
+        <!-- Project 6 -->
+        <div class="item">
+            <div class="image-container">
+                <img src="../Poze\VS30 FA L1.jpeg" alt="VS30 FA L1">
+                <div class="title">HUD 206 FCT</div>
+            </div>
+        </div>
+        <!-- Project 7 -->
+        <div class="item">
+            <div class="image-container">
+                <img src="../Poze\Fiat 500 BEV FA.jpg" alt="Fiat 500 BEV FA">
+                <div class="title">HUD MMA FCT</div>
+            </div>
+        </div>
+
+        <!-- Project 8 -->
+        <div class="item">
+            <div class="image-container">
+                <img src="../Poze\Fiat 500 BEV FA.jpg" alt="Fiat 356 FDC FA">
+                <div class="title">FIAT 500 FCT</div>
+            </div>
+        </div>
+
+        <!-- Project 9 -->
+        <div class="item">
+            <div class="image-container">
+                <img src="../Poze\Fiat 500 BEV FA.jpg" alt="Fiat 356 FA">
+                <div class="title">Fiat 356 FCT</div>
+            </div>
+        </div>
+
+        <!-- Project 10 -->
+        <div class="item">
+            <div class="image-container">
+                <img src="../Poze\BMW_AZV.jpg" alt="AZV DCS">
+                <div class="title">VS 30 FCT</div>
+            </div>
+        </div>
+
+        <!-- Project 11 -->
+        <div class="item">
+            <div class="image-container">
+                <img src="../Poze\BMW_AZV.jpg" alt="AZV I-CAM">
+                <div class="title">Audi Gen 2 FCT</div>
+            </div>
+        </div>
+
+	<!-- Project 12 -->
+        <div class="item">
+            <div class="image-container">
+                <img src="../Poze\BMW_AZV.jpg" alt="AZV U25">
+                <div class="title">PGU FCT</div>
+            </div>
+        </div>
+	<!-- Project 13 -->
+        <div class="item">
+            <div class="image-container">
+                <img src="../Poze\BMW_AZV.jpg" alt="AZV U25">
+                <div class="title">Daimler MBEAM FCT</div>
+            </div>
+        </div>
+	 <!-- Project 14 -->
+        <div class="item">
+            <div class="image-container">
+                <img src="../Poze\BMW_AZV.jpg" alt="AZV U25">
+                <div class="title">IDBUZZ FORD HUD FCT</div>
+            </div>
+        </div>
+	 <!-- Project 15 -->
+        <div class="item">
+            <div class="image-container">
+                <img src="../Poze\BMW_AZV.jpg" alt="AZV U25">
+                <div class="title">PSA FCT</div>
+            </div>
+        </div>
+
+
+    </div>
+  </div>
+</div>
+
+<!-- Add floating players dynamically here -->
+<div class="player" style="left: 80%; top: 30%;" data-id="1">
+  <img src="../Poze/Achim.jpg" alt="Achim">
+  <span class="player-name">Achim Catalin</span>
+</div>
+
+<div class="player" style="left: 80%; top: 30%;" data-id="2">
+  <img src="../Poze/Achim.jpg" alt="Achim">
+  <span class="player-name">Achim Catalin</span>
+</div>
+
+<div class="player" style="left: 80%; top: 30%;" data-id="3">
+  <img src="../Poze/Achim.jpg" alt="Achim">
+  <span class="player-name">Achim Catalin</span>
+</div>
+
+<div class="player" style="left: 70%; top: 50%;" data-id="4">
+  <img src="../Poze/Butnaru.jpg" alt="Butnaru">
+  <span class="player-name">Butnaru Ciprian</span>
+</div>
+
+<div class="player" style="left: 70%; top: 50%;" data-id="5">
+  <img src="../Poze/Butnaru.jpg" alt="Butnaru">
+  <span class="player-name">Butnaru Ciprian</span>
+</div>
+
+<div class="player" style="left: 70%; top: 50%;" data-id="6">
+  <img src="../Poze/Butnaru.jpg" alt="Butnaru">
+  <span class="player-name">Butnaru Ciprian</span>
+</div>
+
+<div class="player" style="left: 70%; top: 50%;" data-id="7">
+  <img src="../Poze/Butnaru.jpg" alt="Butnaru">
+  <span class="player-name">Butnaru Ciprian</span>
+</div>
+
+<div class="player" style="left: 70%; top: 50%;" data-id="8">
+  <img src="../Poze/Butnaru.jpg" alt="Butnaru">
+  <span class="player-name">Butnaru Ciprian</span>
+</div>
+
+<div class="player" style="left: 70%; top: 50%;" data-id="9">
+  <img src="../Poze/Butnaru.jpg" alt="Butnaru">
+  <span class="player-name">Butnaru Ciprian</span>
+</div>
+	
+<div class="player" style="left: 70%; top: 50%;" data-id="10">
+    <img src="../Poze/MunteanuFCT.jpg" alt="Munteanu">
+    <span class="player-name">Muntean Cristian</span>
+</div>
+
+<div class="player" style="left: 70%; top: 50%;" data-id="11">
+    <img src="../Poze/MunteanuFCT.jpg" alt="Munteanu">
+    <span class="player-name">Muntean Cristian</span>
+</div>
+
+<div class="player" style="left: 70%; top: 50%;" data-id="12">
+    <img src="../Poze/MunteanuFCT.jpg" alt="Munteanu">
+    <span class="player-name">Muntean Cristian</span>
+</div>
+
+<div class="player" style="left: 70%; top: 50%;" data-id="13">
+    <img src="../Poze/MunteanuFCT.jpg" alt="Munteanu">
+    <span class="player-name">Muntean Cristian</span>
+</div>
+	
+<div class="player" style="left: 70%; top: 50%;" data-id="14">
+    <img src="../Poze/Pirjol.jpg" alt="Pirjol">
+    <span class="player-name">Pirjol Florin</span>
+</div>
+
+<div class="player" style="left: 70%; top: 50%;" data-id="15">
+    <img src="../Poze/Pirjol.jpg" alt="Pirjol">
+    <span class="player-name">Pirjol Florin</span>
+</div>
+
+<div class="player" style="left: 70%; top: 50%;" data-id="16">
+    <img src="../Poze/Balan.jpg" alt="Balan">
+    <span class="player-name">Balan Adrian</span>
+</div>
+
+<div class="player" style="left: 70%; top: 50%;" data-id="17">
+    <img src="../Poze/Balan.jpg" alt="Balan">
+    <span class="player-name">Balan Adrian</span>
+</div>
+
+<div class="player" style="left: 70%; top: 50%;" data-id="18">
+    <img src="../Poze/Balan.jpg" alt="Balan">
+    <span class="player-name">Balan Adrian</span>
+</div>
+
+<div class="player" style="left: 70%; top: 50%;" data-id="19">
+    <img src="../Poze/Balan.jpg" alt="Balan">
+    <span class="player-name">Balan Adrian</span>
+</div>
+
+<div class="player" style="left: 70%; top: 50%;" data-id="20">
+    <img src="../Poze/Balan.jpg" alt="Balan">
+    <span class="player-name">Balan Adrian</span>
+</div>
+  
+<div class="player" style="left: 70%; top: 50%;" data-id="21">
+    <img src="../Poze/Jerdea.jpg" alt="Jerdea">
+    <span class="player-name">Ion Jerdea</span>
+</div>
+
+<div class="player" style="left: 70%; top: 50%;" data-id="22">
+    <img src="../Poze/Jerdea.jpg" alt="Jerdea">
+    <span class="player-name">Ion Jerdea</span>
+</div>
+
+<div class="player" style="left: 70%; top: 50%;" data-id="23">
+    <img src="../Poze/Jerdea.jpg" alt="Jerdea">
+    <span class="player-name">Ion Jerdea</span>
+</div>
+
+<div class="player" style="left: 70%; top: 50%;" data-id="24">
+    <img src="../Poze/Jerdea.jpg" alt="Jerdea">
+    <span class="player-name">Ion Jerdea</span>
+</div>
+
+<div class="player" style="left: 70%; top: 50%;" data-id="25">
+    <img src="../Poze/Jerdea.jpg" alt="Jerdea">
+    <span class="player-name">Ion Jerdea</span>
+</div>
+
+<div class="player" style="left: 70%; top: 50%;" data-id="26">
+    <img src="../Poze/Palos.jpg" alt="Palos">
+    <span class="player-name">Sorin Palos</span>
+</div>
+
+<div class="player" style="left: 70%; top: 50%;" data-id="27">
+    <img src="../Poze/Palos.jpg" alt="Palos">
+    <span class="player-name">Sorin Palos</span>
+</div>
+
+<div class="player" style="left: 70%; top: 50%;" data-id="28">
+    <img src="../Poze/Palos.jpg" alt="Palos">
+    <span class="player-name">Sorin Palos</span>
+</div>
+  
+<div class="player" style="left: 70%; top: 50%;" data-id="29">
+    <img src="../Poze/Raescu.jpg" alt="Raescu">
+    <span class="player-name">Marius Raescu</span>
+</div>
+
+<div class="player" style="left: 70%; top: 50%;" data-id="30">
+    <img src="../Poze/Raescu.jpg" alt="Raescu">
+    <span class="player-name">Marius Raescu</span>
+</div>
+
+<div class="player" style="left: 70%; top: 50%;" data-id="31">
+    <img src="../Poze/Raescu.jpg" alt="Raescu">
+    <span class="player-name">Marius Raescu</span>
+</div>
+
+<div class="player" style="left: 70%; top: 50%;" data-id="32">
+    <img src="../Poze/Raescu.jpg" alt="Raescu">
+    <span class="player-name">Marius Raescu</span>
+</div>
+
+<div class="player" style="left: 70%; top: 50%;" data-id="33">
+    <img src="../Poze/Raescu.jpg" alt="Raescu">
+    <span class="player-name">Marius Raescu</span>
+</div>
+
+   <script>
+        // Drag and Drop Functionality
+        let draggedPlayer = null;
+        let offsetX = 0, offsetY = 0;
+
+        // Load saved positions on page load
+        window.onload = () => {
+            const savedPositions4 = JSON.parse(localStorage.getItem('playerPositions4')) || {};
+            document.querySelectorAll('.player').forEach(player => {
+                const playerId = player.getAttribute('data-id');
+                const position = savedPositions4[playerId];
+                if (position) {
+                    player.style.left = position.left;
+                    player.style.top = position.top;
+                }
+            });
+        };
+
+        document.querySelectorAll('.player').forEach(player => {
+            player.addEventListener('mousedown', (e) => {
+                draggedPlayer = player;
+                offsetX = e.offsetX;
+                offsetY = e.offsetY;
+                draggedPlayer.style.cursor = 'grabbing';
+
+                const onMouseMove = (e) => {
+                    draggedPlayer.style.left = `${e.pageX - offsetX - draggedPlayer.offsetParent.offsetLeft}px`;
+                    draggedPlayer.style.top = `${e.pageY - offsetY - draggedPlayer.offsetParent.offsetTop}px`;
+                };
+
+                document.addEventListener('mousemove', onMouseMove);
+
+                const onMouseUp = () => {
+                    draggedPlayer.style.cursor = 'grab';
+                    document.removeEventListener('mousemove', onMouseMove);
+                    document.removeEventListener('mouseup', onMouseUp);
+
+                    // Save the new position to localStorage
+                    const playerId = draggedPlayer.getAttribute('data-id');
+                    const newPosition4 = {
+                        left: draggedPlayer.style.left,
+                        top: draggedPlayer.style.top
+                    };
+
+                    const savedPositions4 = JSON.parse(localStorage.getItem('playerPositions4')) || {};
+                    savedPositions4[playerId] = newPosition4;
+                    localStorage.setItem('playerPositions4', JSON.stringify(savedPositions4));
+
+                    draggedPlayer = null;
+                };
+
+                document.addEventListener('mouseup', onMouseUp);
+            });
+
+            // Double Click to Open Another HTML Page
+            player.addEventListener('dblclick', () => {
+                const playerId = player.getAttribute('data-id');
+                const playerPages = {
+                    "1": "FCT/Achim/AchimCatalin.html", 
+              	    "2": "FCT/Butnaru/ButnaruCiprian.html",
+                    "3": "FCT/Muntean/MunteanCristian.html",
+                    "4": "FCT/Pirjol/PirjolFlorin.html",
+                    "5": "ICT/Balan/BilanAdrian.html",
+                    "6": "ICT/Jerdea/IonJerdea.html",
+                    "7": "ICT/Palos/SorinPalos.html",
+                    "8": "ICT/Raescu/MariusRaescu.html",
+                    
+
+		                   };
+
+                // Redirect to the corresponding player page
+                const redirectTo = playerPages[playerId] || `player-details.html?player=${playerId}`;
+                window.location.href = redirectTo;
+            });
+        });
+    </script>
+
+
+</body>
+</html>

@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skill Modifier</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #f4f4f4;
+            flex-direction: column;
+        }
+        .container {
+            text-align: center;
+        }
+        .background-image {
+            width: 200px; /* Adjusted size */
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+        }
+        .skills-container {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            width: 700px;
+        }
+        .skill-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .stars {
+            display: flex;
+            gap: 5px;
+        }
+        .star {
+            width: 30px;
+            height: 30px;
+            cursor: pointer;
+        }
+        .rating-text {
+            font-size: 18px;
+            margin-left: 10px;
+        }
+        .previous-ratings {
+            margin-top: 20px;
+            font-size: 16px;
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <img src="Cimpan.jpg" alt="Skill Background" class="background-image">
+        <div class="skills-container">
+	<h1><a href="Notite.html" target="_blank">Observatii</a></h1>
+            <div class="skill-row">
+                <span>Planificare si Organizare</span>
+                <div class="stars" data-skill="Planificare-si-Organizare4">
+                    <img src="star_empty.png" data-value="1" class="star" />
+                    <img src="star_empty.png" data-value="2" class="star" />
+                    <img src="star_empty.png" data-value="3" class="star" />
+                    <img src="star_empty.png" data-value="4" class="star" />
+                    <img src="star_empty.png" data-value="5" class="star" />
+                </div>
+                <span class="rating-text" id="Planificare-si-Organizare4-rating">Rating: 0/5</span>
+                <div class="previous-ratings" id="Planificare-si-Organizare4-history"></div>
+            </div>
+            <div class="skill-row">
+                <span>Coordonare si Monitorizare</span>
+                <div class="stars" data-skill="Coordonare-si-Monitorizare4">
+                    <img src="star_empty.png" data-value="1" class="star" />
+                    <img src="star_empty.png" data-value="2" class="star" />
+                    <img src="star_empty.png" data-value="3" class="star" />
+                    <img src="star_empty.png" data-value="4" class="star" />
+                    <img src="star_empty.png" data-value="5" class="star" />
+                </div>
+                <span class="rating-text" id="Coordonare-si-Monitorizare4-rating">Rating: 0/5</span>
+                <div class="previous-ratings" id="Coordonare-si-Monitorizare4-history"></div>
+            </div>
+            <div class="skill-row">
+                <span>Comunicare</span>
+                <div class="stars" data-skill="Comunicare4">
+                    <img src="star_empty.png" data-value="1" class="star" />
+                    <img src="star_empty.png" data-value="2" class="star" />
+                    <img src="star_empty.png" data-value="3" class="star" />
+                    <img src="star_empty.png" data-value="4" class="star" />
+                    <img src="star_empty.png" data-value="5" class="star" />
+                </div>
+                <span class="rating-text" id="Comunicare4-rating">Rating: 0/5</span>
+                <div class="previous-ratings" id="Comunicare4-history"></div>
+            </div>
+            <div class="skill-row">
+                <span>Relationare</span>
+                <div class="stars" data-skill="Relationare4">
+                    <img src="star_empty.png" data-value="1" class="star" />
+                    <img src="star_empty.png" data-value="2" class="star" />
+                    <img src="star_empty.png" data-value="3" class="star" />
+                    <img src="star_empty.png" data-value="4" class="star" />
+                    <img src="star_empty.png" data-value="5" class="star" />
+                </div>
+                <span class="rating-text" id="Relationare4-rating">Rating: 0/5</span>
+                <div class="previous-ratings" id="Relationare4-history"></div>
+            </div>
+            <div class="skill-row">
+                <span>Setarea Obiectivelor</span>
+                <div class="stars" data-skill="Setarea-Obiectivelor4">
+                    <img src="star_empty.png" data-value="1" class="star" />
+                    <img src="star_empty.png" data-value="2" class="star" />
+                    <img src="star_empty.png" data-value="3" class="star" />
+                    <img src="star_empty.png" data-value="4" class="star" />
+                    <img src="star_empty.png" data-value="5" class="star" />
+                </div>
+                <span class="rating-text" id="Setarea-Obiectivelor4-rating">Rating: 0/5</span>
+                <div class="previous-ratings" id="Setarea-Obiectivelor4-history"></div>
+            </div>
+            <div class="skill-row">
+                <span>Evaluarea Performantei</span>
+                <div class="stars" data-skill="Evaluarea-performantei4">
+                    <img src="star_empty.png" data-value="1" class="star" />
+                    <img src="star_empty.png" data-value="2" class="star" />
+                    <img src="star_empty.png" data-value="3" class="star" />
+                    <img src="star_empty.png" data-value="4" class="star" />
+                    <img src="star_empty.png" data-value="5" class="star" />
+                </div>
+                <span class="rating-text" id="Evaluarea-performantei4-rating">Rating: 0/5</span>
+                <div class="previous-ratings" id="Evaluarea-performantei4-history"></div>
+            </div>
+            <div class="skill-row">
+                <span>Influentare</span>
+                <div class="stars" data-skill="Influentare4">
+                    <img src="star_empty.png" data-value="1" class="star" />
+                    <img src="star_empty.png" data-value="2" class="star" />
+                    <img src="star_empty.png" data-value="3" class="star" />
+                    <img src="star_empty.png" data-value="4" class="star" />
+                    <img src="star_empty.png" data-value="5" class="star" />
+                </div>
+                <span class="rating-text" id="Influentare4-rating">Rating: 0/5</span>
+                <div class="previous-ratings" id="Influentare4-history"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Password Protection
+        const correctPassword = "password"; // Define the password
+        const userPassword = prompt("Enter the password to access this page:");
+
+        if (userPassword === correctPassword) {
+            document.body.style.display = "flex"; // Show the content if the password is correct
+        } else {
+            alert("Incorrect password. Access denied.");
+            window.location.href = "https://www.google.com"; // Redirect to a safe page
+        }
+
+        // Rating functionality
+        function loadRatings() {
+            document.querySelectorAll('.stars').forEach(starsDiv => {
+                const skillName = starsDiv.getAttribute('data-skill');
+                const savedRating = localStorage.getItem(skillName);
+
+                if (savedRating) {
+                    updateStars(starsDiv, parseFloat(savedRating)); 
+                    const ratingText = document.getElementById(`${skillName}-rating`);
+                    ratingText.textContent = `Rating: ${savedRating}/5`;
+                }
+                loadPreviousRatings(skillName);
+            });
+        }
+
+        function updateStars(starsDiv, rating) {
+            const stars = starsDiv.querySelectorAll('.star');
+            const fullStars = Math.floor(rating);
+            const hasHalfStar = (rating % 1) !== 0;
+
+            stars.forEach(star => {
+                const value = parseFloat(star.dataset.value);
+
+                if (value <= fullStars) {
+                    star.src = 'F.png'; // Full star
+                } else if (value === fullStars + 1 && hasHalfStar) {
+                    star.src = 'R.png'; // Half star
+                } else {
+                    star.src = 'E.png'; // Empty star
+                }
+            });
+        }
+
+        function loadPreviousRatings(skillName) {
+            const ratingsHistory = JSON.parse(localStorage.getItem(`${skillName}-history`) || "[]");
+            const historyContainer = document.getElementById(`${skillName}-history`);
+
+            if (ratingsHistory.length > 0) {
+                historyContainer.innerHTML = '<strong>Previous Ratings:</strong>';
+                const reversedHistory = ratingsHistory.reverse();
+
+                reversedHistory.forEach((rating, index) => {
+                    const starDisplay = createStarDisplay(rating);
+                    historyContainer.innerHTML += `
+                        <div>
+                            ${index + 1}. ${rating}/5 ${starDisplay}
+                        </div>
+                    `;
+                });
+            }
+        }
+
+        function createStarDisplay(rating) {
+            const fullStars = Math.floor(rating);
+            const hasHalfStar = (rating % 1) !== 0;
+            let starDisplay = '';
+
+            for (let i = 1; i <= 5; i++) {
+                if (i <= fullStars) {
+                    starDisplay += '★'; // Full star
+                } else if (i === fullStars + 1 && hasHalfStar) {
+                    starDisplay += '☆'; // Half star
+                } else {
+                    starDisplay += '☆'; // Empty star
+                }
+            }
+
+            return starDisplay;
+        }
+
+        document.querySelectorAll('.stars').forEach(starsDiv => {
+            starsDiv.addEventListener('click', (event) => {
+                if (event.target.classList.contains('star')) {
+                    const selectedValue = parseFloat(event.target.dataset.value);
+                    const isHalf = event.offsetX < event.target.offsetWidth / 2;
+
+                    let rating = isHalf ? selectedValue - 0.5 : selectedValue;
+                    const skillName = starsDiv.getAttribute('data-skill');
+                    localStorage.setItem(skillName, rating.toFixed(1));
+
+                    const ratingsHistory = JSON.parse(localStorage.getItem(`${skillName}-history`) || "[]");
+                    ratingsHistory.push(rating.toFixed(1));
+                    if (ratingsHistory.length > 3) {
+                        ratingsHistory.shift(); // Keep only the last 3 ratings
+                    }
+                    localStorage.setItem(`${skillName}-history`, JSON.stringify(ratingsHistory));
+
+                    updateStars(starsDiv, rating);
+                    const ratingText = document.getElementById(`${skillName}-rating`);
+                    ratingText.textContent = `Rating: ${rating.toFixed(1)}/5`;
+
+                    loadPreviousRatings(skillName);
+                }
+            });
+        });
+
+        loadRatings();
+    </script>
+</body>
+</html>

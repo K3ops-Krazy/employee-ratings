@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Split Page</title>
+  <style>
+html {
+  scroll-behavior: smooth;
+}
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+h1 {
+  font-size: 70px;
+  color: white;
+  text-align: center;
+  margin: 40px 0 20px;
+}
+body {
+  font-family: Arial, sans-serif;
+  background: linear-gradient(135deg, #5A3ABF, #D13C8A, #FF4C1F, #FF5E1F, #FFD200);
+  overflow-y: auto;
+  position: relative;
+}
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 20px;
+  align-items: flex-start;
+}
+.item {
+  width: 800px;
+  min-height: 600px;
+  margin: 15px;
+  backdrop-filter: blur(5px);
+  background-color: rgba(255, 255, 255, 0.3);
+  border-radius: 60px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  font-size: 16px;
+  font-weight: bold;
+  color: #333;
+  overflow: visible;
+  position: relative;
+  padding-bottom: 100px;
+}
+.item:hover {
+ transform: scale(1.05);
+ box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+}
+.image-container{
+  width: 100%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding-top: 20px;
+}
+.image-container img {
+  width: 100%;
+  height: auto;
+  max-height: 190px;
+  object-fit: contain;
+}
+.title {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 30px;
+  font-weight: bold;
+  color: #ffffff;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+}
+.player-container {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: transform 0.3s ease;
+  cursor: grab;
+}
+.player-container:hover {
+  transform: scale(1.1);
+}
+.player-circle {
+  width: 170px;
+  height: 170px;
+  border-radius: 50%;
+  overflow: hidden;
+  background-color: rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(8px);
+  border: 4px solid white;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.4);
+}
+.player-circle img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+.player-name {
+  margin-top: 10px;
+  font-size: 20px;
+  font-weight: bold;
+  color: white;
+  text-shadow: 1px 1px 3px black;
+  text-align: center;
+}
+.player-position {
+  font-size: 20px;
+  color: white;
+  margin-top: 2px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  text-shadow: 1px 1px 3px black;
+}
+.player-container:hover .player-position {
+  opacity: 1;
+}
+.project-link,
+.project-link1 {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 24px;
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 10px 20px;
+  border-radius: 10px;
+  z-index: 999;
+}
+.project-link {
+  bottom: 20px;
+}
+.project-link1 {
+  top: 20px;
+}
+.project-link:hover,
+.project-link1:hover {
+  background-color: rgba(0, 0, 0, 0.7);
+}
+  
+.item {
+  flex-direction: column;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: flex-start;
+  margin: 40px;
+}
+
+.players-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+  margin-top: 180px;
+  padding: 0 40px 40px;
+  width: 100%;
+  box-sizing: border-box;
+}  
+
+.section-title{
+    font-size: 40px;
+    font-weight: bold;
+    color: white;
+    margin-top: 30px;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.top-bar {
+      width: 100%;
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      padding: 50px 60px;
+      position: fixed;
+      top: 0;
+      left: 0;
+      background-color: rgba(255, 255, 255, 0.2); /* bară albă */
+      z-index: 1000;
+      backdrop-filter: blur(8px);
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+    }
+
+    .project-link,
+    .project-link1 {
+      font-size: 30px;
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      background-color: transparent;
+      padding: 12px 24px;
+      border-radius: 12px;
+      border: 2px solid transparent;
+      transition: all 0.4s ease;
+      position: relative;
+      z-index: 1;
+      overflow: hidden;
+    }
+
+    .project-link:hover,
+    .project-link1:hover {
+      background: linear-gradient(135deg, #5A3ABF, #D13C8A, #FF4C1F, #FFD200);
+      color: white;
+      background-size: 400% 400%;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      animation: gradientShift 5s ease infinite;
+    }
+
+</style>
+</head>
+<body>
+
+<div class="wrapper">
+    <div class="top-bar">
+      <a href="ProjectBKPRepartitionAssyTest.html" class="project-link">ProjectBKPRepartitionVision</a>
+      <a href="..\Index.html" class="project-link">Home</a>
+    </div>
+
+<div class="container">
+   
+  <!-- Item 2 -->
+ <div class="item">
+    <h2 class="section-title">SMT</h2>
+
+    <!-- Player inside item -->
+    <div class="players-grid">
+        <div class="player-container" data-id="10">
+        <div class="player-circle">
+            <img src="../Poze/Dobos.jpg" alt="Dobos" />
+        </div>
+        <div class="player-name">Dobos Andrei</div>
+        <div class="player-position">Production Technology Engineer</div>
+        </div>
+
+        <div class="player-container" data-id="11">
+        <div class="player-circle">
+            <img src="../Poze/Fleara.jpg" alt="Fleara" />
+        </div>
+        <div class="player-name">Fleara Stelian</div>
+        <div class="player-position">Production Technology Engineer</div>
+        </div>
+
+        <div class="player-container" data-id="12">
+        <div class="player-circle">
+            <img src="../Poze/Grescenko.jpg" alt="Grescenko" />
+        </div>
+        <div class="player-name">Grescenko Adrian</div>
+        <div class="player-position">Production Technology Engineer</div>
+        </div>
+
+        <div class="player-container" data-id="13">
+        <div class="player-circle">
+            <img src="../Poze/Marcuti.jpg" alt="Marcuti" />
+        </div>
+        <div class="player-name">Marcuti Alin</div>
+        <div class="player-position">Production Technology Engineer</div>
+        </div>
+
+        <div class="player-container" data-id="14">
+        <div class="player-circle">
+            <img src="../Poze/Prepelita.jpg" alt="Prepelita" />
+        </div>
+        <div class="player-name">Prepelita Corneliu</div>
+        <div class="player-position">Production Technology Engineer</div>
+        </div>
+
+        <div class="player-container" data-id="15">
+        <div class="player-circle">
+            <img src="../Poze/Tudorescu.jpg" alt="Tudorescu" />
+        </div>
+        <div class="player-name">Tudorescu Ionel</div>
+        <div class="player-position">Production Technology Engineer</div>
+        </div>
+    </div>
+ </div>
+  
+  
+  <script>
+    let dragged = null;
+    let offsetX = 0, offsetY = 0;
+
+    const containers = document.querySelectorAll(".player-container");
+
+    containers.forEach(container => {
+     
+
+      container.addEventListener("dblclick", () => {
+        const id = container.getAttribute("data-id");
+        const paths = {
+          "1": "Molding/Asproniu/AsproniuBogdan.html",
+          "2": "Molding/Bara/BaraConstatin.html",
+		  "3": "Molding/Buse/BuseCristian.html",
+		  "4": "Molding/Deaconescu/DeaconescuBogdan.html",
+		  "5": "Molding/Hopota/HopotaCostin.html",
+		  "6": "Molding/Hurezanu/HurezanuRobert.html",
+		  "7": "Molding/Moise/MoiseAdrian.html",
+		  "8": "Molding/Nicola/NicolaLucian.html",
+		  "9": "Molding/Sirbu/SirbuStefan.html",
+		  "10": "SMT/Dobos/DobosAndrei.html",
+		  "11": "SMT/Fleara/FlearaStelian.html",
+		  "12": "SMT/Grescenko/GrescenkoAdrian.html",
+		  "13": "SMT/Marcuti/MarcutiAlin.html",
+		  "14": "SMT/Prepelita/PrepelitaCorneliu.html",
+		  "15": "SMT/Tudorescu/TudorescuVladut.html",
+          // Adaugă aici alți angajați după caz
+        };
+        if (paths[id]) {
+          window.location.href = paths[id];
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>

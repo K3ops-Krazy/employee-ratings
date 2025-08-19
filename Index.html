@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Org Chart - Dynamic</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      background: linear-gradient(135deg, rgba(90, 58, 191, 0.85), rgba(209, 60, 138, 0.85), rgba(255, 76, 31, 0.85), rgba(255, 210, 0, 0.85)), url('Poze/UX.png');
+      background-position: center center;
+      padding: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+      animation: gradientBG 15s ease infinite;
+	  position: relative;
+    }
+
+    @keyframes gradientBG {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+    }
+
+    .org-chart {
+      position: relative;
+      width: 1000px;
+      height: 700px;
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(50px);
+      border-radius: 20px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+      overflow: hidden;
+      padding: 40px;
+    }
+
+    .person {
+      position: absolute;
+      text-align: center;
+      width: 160px;
+      opacity: 0;
+      animation: fadeInUp 0.5s ease forwards;
+      cursor: pointer;
+      transform: translate(-50%, -50%);
+    }
+
+    .person img {
+      width: 130px;
+      height: 130px;
+      border-radius: 50%;
+      border: 3px solid #fff;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      object-fit: cover;
+      display: block;
+      margin: 0 auto;
+    }
+
+    .person img:hover {
+      transform: scale(1.1);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.7);
+    }
+
+    .name {
+      margin-top: 12px;
+      font-weight: bold;
+      font-size: 18px;
+      color: white;
+      text-shadow: 0 1px 4px rgba(0, 0, 0, 0.7);
+    }
+
+    .position {
+      font-size: 14px;
+      color: #fff;
+      opacity: 0;
+      height: 20px;
+      margin-top: 4px;
+      transition: opacity 0.3s ease;
+      pointer-events: none;
+    }
+
+    .person:hover .position {
+      opacity: 1;
+    }
+
+    @keyframes fadeInUp {
+      from {
+        transform: translate(-50%, calc(-50% + 40px));
+        opacity: 0;
+      }
+      to {
+        transform: translate(-50%, -50%);
+        opacity: 1;
+      }
+    }
+
+    /* Poziții răsfirate față de centru */
+    .ceo {
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      animation-delay: 0.2s;
+    }
+
+    .top-left {
+      top: calc(50% - 230px);
+      left: calc(50% - 200px);
+      animation-delay: 0.4s;
+    }
+
+    .top-mid {
+      top: calc(50% - 260px);
+      left: 50%;
+      animation-delay: 0.6s;
+    }
+
+    .top-right {
+      top: calc(50% - 230px);
+      left: calc(50% + 200px);
+      animation-delay: 0.8s;
+    }
+
+    .mid-left {
+      top: 50%;
+      left: calc(50% - 310px);
+      animation-delay: 1.0s;
+    }
+
+    .mid-right {
+      top: 50%;
+      left: calc(50% + 310px);
+      animation-delay: 1.2s;
+    }
+
+    .bottom-left {
+      top: calc(50% + 230px);
+      left: calc(50% - 240px);
+      animation-delay: 1.4s;
+    }
+
+    .bottom-right {
+      top: calc(50% + 230px);
+      left: calc(50% + 240px);
+      animation-delay: 1.6s;
+    }
+
+    /* Responsive (optional, simplificat) */
+    @media (max-width: 768px) {
+      .org-chart {
+        width: 90vw;
+        height: 600px;
+        padding: 20px;
+      }
+
+      .person {
+        width: 120px;
+      }
+
+      .person img {
+        width: 100px;
+        height: 100px;
+      }
+
+      .name {
+        font-size: 15px;
+      }
+
+      .position {
+        font-size: 12px;
+        height: 18px;
+      }
+    }
+	
+	
+	
+
+/* Fade-in keyframes */
+@keyframes fadeIn {
+  from { 
+    opacity: 0; 
+    transform: translate(-50%, -40%); /* Slight upward shift */
+  }
+  to { 
+    opacity: 1; 
+    transform: translate(-50%, -50%); /* Final centered position */
+  }
+}
+
+.layout-btn {
+  position: absolute;
+  left: 50%;
+  top: 70%;
+  transform: translate(-50%, -50%);
+  
+  background: #ffcc00;
+  color: black;
+  padding: 12px 22px;
+  font-size: 20px;
+  border: none;
+  border-radius: 10px;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  z-index: 1000;
+
+  text-decoration: none;
+  text-shadow: #fc0 1px 0 50px;
+
+  /* Animation */
+  opacity: 0;
+  animation: fadeIn 1s ease-out forwards;
+  animation-delay: 1.4s; /* small delay for smoothness */
+}
+
+.layout-btn:hover {
+  transform: translate(-50%, -50%) scale(1.05);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+  text-shadow: #fc0 2px 0 15px;
+}
+
+
+
+
+  </style>
+</head>
+<body>
+
+  <div class="org-chart">
+    <div class="person ceo">
+      <a href="IndexSkilsGL.html">
+        <img src="Poze/Puiu.jpg" alt="Puiu">
+      </a>
+      <div class="name">Puiu-Ovidiu Popescu</div>
+      <div class="position">Head of Plant Industrial Engineering</div>
+    </div>
+
+    <div class="person top-left">
+      <a href="Bobic/Bobic.html">
+        <img src="Poze/Bobic.jpg" alt="Bobic">
+      </a>
+      <div class="name">Bobic Marius Ioan</div>
+      <div class="position">Group Leader Vision and Automation Engineering</div>
+    </div>
+
+
+    <div class="person top-right">
+      <a href="TesteHUD/ProjectRepartitionHUD.html">
+        <img src="Poze/Turcu.jpg" alt="Turcu">
+      </a>
+      <div class="name">Marius-Mihai Turcu</div>
+      <div class="position">Group Leader HUD</div>
+    </div>
+
+    <div class="person mid-left">
+      <a href="Grecu/Grecu.html">
+        <img src="Poze/Grecu.jpg" alt="Grecu">
+      </a>
+      <div class="name">Alexandru Catalin Grecu</div>
+      <div class="position">Group Leader ICT and FCT</div>
+    </div>
+
+    <div class="person mid-right">
+      <a href="Strambu/Strambu.html">
+        <img src="Poze/Dan.jpg" alt="Dan">
+      </a>
+      <div class="name">Dan-Claudiu Strambu</div>
+      <div class="position">Group Leader Molding and SMT</div>
+    </div>
+
+    <div class="person bottom-left">
+      <a href="AsamblareFA/ProjectRepartitionFA.html">
+        <img src="Poze/Chis.jpg" alt="Chis">
+      </a>
+      <div class="name">Marius Chis</div>
+      <div class="position">Group Leader Preassy FA</div>
+    </div>
+
+    <div class="person bottom-right">
+      <a href="AsamblarePreAssy/ProjectRepartitionAsamblarePreassy.html">
+        <img src="Poze/Sorin.jpg" alt="Sorin">
+      </a>
+      <div class="name">Sorin David</div>
+      <div class="position">Group Leader Preassy</div>
+    </div>
+  </div>
+
+<!-- Layout Selection Button -->
+<div class="layout-button-container">
+  <a href="Layout/layout-section.html" class="layout-btn">View Layouts</a>
+</div>
+
+
+</body>
+</html>

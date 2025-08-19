@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Split Page</title>
+    <style>
+        /* Basic Reset */
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+       /* Basic Styling */
+        body, html {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            height: 100%;
+            background-color: #f4f4f4;
+        }
+
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .item {
+            width: 300px;
+            height:400px;
+            margin: 15px;
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            font-size: 16px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .item img {
+            max-width: 100%;
+            max-height: 100%;
+            border-radius: 10px;
+        }
+
+        .title {
+            position: absolute;
+            Bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 18px;
+            font-weight: bold;
+            color: #000000;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+        }
+
+        .image-container {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+
+        .image-container img {
+            object-fit: cover;
+            border-radius: 10px;
+        }
+
+
+        /* Players */
+        .player {
+            width: 70px;
+            height: 100px;
+            background-color: #ffff00;
+            border-radius: 20%;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: absolute;
+            cursor: grab;
+        }
+
+        .player img {
+            width: 100%;
+            height: 80%;
+            object-fit: cover;
+        }
+
+        .player-name {
+            height: 90%; /* Reserve space for the name */
+            font-size: 11px;
+            color: #000000;
+            text-align: center;
+            width: 100%;
+            box-sizing: border-box;
+            margin-top: 2px;
+        }
+
+        .project-link {
+            position: absolute;
+            top: 20px; /* Adjust as needed to control the distance from the top */
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 24px;
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            z-index: 10; /* Ensure it's above the field */
+            background-color: rgba(0, 0, 0, 0.5); /* Optional: Background color for visibility */
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        .project-link:hover {
+            background-color: rgba(0, 0, 0, 0.7); /* Optional: Change background color on hover */
+        }
+	
+	.project-link {
+            position: absolute;
+            top: 20px; /* Adjust as needed to control the distance from the top */
+            left: 25%;
+            transform: translateX(-50%);
+            font-size: 24px;
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            z-index: 10; /* Ensure it's above the field */
+            background-color: rgba(0, 0, 0, 0.5); /* Optional: Background color for visibility */
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        .project-link:hover {
+            background-color: rgba(0, 0, 0, 0.7); /* Optional: Change background color on hover */
+        }
+	.project-link1 {
+            position: absolute;
+            top: 20px; /* Adjust as needed to control the distance from the top */
+            left: 75%;
+            transform: translateX(-50%);
+            font-size: 24px;
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            z-index: 10; /* Ensure it's above the field */
+            background-color: rgba(0, 0, 0, 0.5); /* Optional: Background color for visibility */
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        .project-link:hover {
+            background-color: rgba(0, 0, 0, 0.7); /* Optional: Change background color on hover */
+        }
+
+
+    </style>
+</head>
+<body>
+	<body>
+    <div class="container">
+        <!-- Project 1 -->
+        <div class="item">
+            <div class="image-container">
+                <img src="FPK FA Linia 1.jpg" alt="FPK FA Linia 1">
+                <div class="title">FPK FA Linia 1</div>
+            </div>
+        </div>
+
+        <!-- Project 2 -->
+        <div class="item">
+            <div class="image-container">
+                <img src="FPK FA Linia 2.jpg" alt="FPK FA Linia 2">
+                <div class="title">FPK FA Linia 2</div>
+            </div>
+        </div>
+
+        <!-- Project 3 -->
+        <div class="item">
+            <div class="image-container">
+                <img src="FPK FA Linia 3.jpg" alt="FPK FA Linia 3">
+                <div class="title">FPK FA Linia 3</div>
+            </div>
+        </div>
+
+        <!-- Project 4 -->
+        <div class="item">
+            <div class="image-container">
+                <img src="Display Assy L1.jpg" alt="Display Assy L1">
+                <div class="title">Display Assy L1</div>
+            </div>
+        </div>
+
+        <!-- Project 5 -->
+        <div class="item">
+            <div class="image-container">
+                <img src="Display Assy L1.jpg" alt="Display Assy L2">
+                <div class="title">Display Assy L2</div>
+            </div>
+        </div>
+
+        <!-- Project 6 -->
+        <div class="item">
+            <div class="image-container">
+                <img src="VS30 FA L1.jpeg" alt="VS30 FA L1">
+                <div class="title">VS30 FA L1</div>
+            </div>
+        </div>
+
+        <!-- Project 7 -->
+        <div class="item">
+            <div class="image-container">
+                <img src="VS30 FA L1.jpeg" alt="VS30 FA L2">
+                <div class="title">VS30 FA L2</div>
+            </div>
+        </div>
+
+        <!-- Project 8 -->
+        <div class="item">
+            <div class="image-container">
+                <img src="Fiat 500 BEV FA.jpg" alt="Fiat 500 BEV FA">
+                <div class="title">Fiat 500 BEV FA</div>
+            </div>
+        </div>
+
+        <!-- Project 9 -->
+        <div class="item">
+            <div class="image-container">
+                <img src="Fiat 500 BEV FA.jpg" alt="Fiat 356 FDC FA">
+                <div class="title">Fiat 356 FDC FA</div>
+            </div>
+        </div>
+
+        <!-- Project 10 -->
+        <div class="item">
+            <div class="image-container">
+                <img src="Fiat 500 BEV FA.jpg" alt="Fiat 356 FA">
+                <div class="title">Fiat 356 FA</div>
+            </div>
+        </div>
+
+        <!-- Project 11 -->
+        <div class="item">
+            <div class="image-container">
+                <img src="VS30 FA L1.jpeg" alt="205 Cluster FA">
+                <div class="title">205 Cluster FA</div>
+            </div>
+        </div>
+
+        <!-- Project 12 -->
+        <div class="item">
+            <div class="image-container">
+                <img src="VS30 FA L1.jpeg" alt="205MH FA">
+                <div class="title">205MH FA</div>
+            </div>
+        </div>
+
+        <!-- Project 13 -->
+        <div class="item">
+            <div class="image-container">
+                <img src="VS30 FA L1.jpeg" alt="Silver Box FA">
+                <div class="title">Silver Box FA</div>
+            </div>
+        </div>
+
+        <!-- Project 14 -->
+        <div class="item">
+            <div class="image-container">
+                <img src="Renault M0.jpg" alt="Renault M0">
+                <div class="title">Renault M0</div>
+            </div>
+        </div>
+
+        <!-- Project 15 -->
+        <div class="item">
+            <div class="image-container">
+                <img src="Lancia.jpg" alt="Lancia">
+                <div class="title">Lancia</div>
+            </div>
+        </div>
+
+        <!-- Project 16 -->
+        <div class="item">
+            <div class="image-container">
+                <img src="Ford CD4-U375.jpg" alt="Ford CD4/U375">
+                <div class="title">Ford CD4/U375</div>
+            </div>
+        </div>
+    </div>
+	 <!-- Project 17 -->
+        <div class="item">
+            <div class="image-container">
+                <img src="support.jpg" alt="Ford CD4/U375">
+                <div class="title">Suport Engineering All Lines</div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Players -->
+    
+         <div class="player" style="left: 20%; top: 30%;" data-id="12">
+            <img src="Poze\Abel.jpg" alt="Abel">
+            <span class="player-name">Lefter Abel</span>
+        </div>
+        <div class="player" style="left: 20%; top: 30%;" data-id="2">
+            <img src="Poze\Abel.jpg" alt="Abel">
+            <span class="player-name">Lefter Abel</span>
+        </div>
+
+        <div class="player" style="left: 80%; top: 30%;" data-id="3">
+            <img src="Poze\Bocse.jpg" alt="Bocse">
+            <span class="player-name">Ienciu-Bocse Alexandru</span>
+        </div>
+        
+        <div class="player" style="left: 70%; top: 50%;" data-id="5">
+            <img src="Poze\Culda.jpg" alt="Culda">
+            <span class="player-name">Culda Vasile</span>
+        </div>
+	<div class="player" style="left: 70%; top: 50%;" data-id="6">
+            <img src="Poze\Eftenoiu.jpg" alt="Eftenoiu">
+            <span class="player-name">Eftenoiu Catalin</span>
+        </div>
+	<div class="player" style="left: 70%; top: 50%;" data-id="1">
+            <img src="Poze\Eftenoiu.jpg" alt="Eftenoiu1">
+            <span class="player-name">Eftenoiu Catalin</span>
+        </div>
+	<div class="player" style="left: 70%; top: 50%;" data-id="4">
+            <img src="Poze\Eftenoiu.jpg" alt="Eftenoiu2">
+            <span class="player-name">Eftenoiu Catalin</span>
+        </div>
+	<div class="player" style="left: 70%; top: 50%;" data-id="8">
+            <img src="Poze\Eftenoiu.jpg" alt="Eftenoiu3">
+            <span class="player-name">Eftenoiu Catalin</span>
+        </div>
+	<div class="player" style="left: 70%; top: 50%;" data-id="10">
+            <img src="Poze\Eftenoiu.jpg" alt="Eftenoiu4">
+            <span class="player-name">Eftenoiu Catalin</span>
+        </div>
+	<div class="player" style="left: 70%; top: 50%;" data-id="20">
+            <img src="Poze\Eftenoiu.jpg" alt="Eftenoiu1">
+            <span class="player-name">Eftenoiu Catalin</span>
+        </div>
+	<div class="player" style="left: 70%; top: 50%;" data-id="7">
+            <img src="Poze\Hoanca.jpg" alt="Hoanca">
+            <span class="player-name">Hoanca Alexandra</span>
+        </div>	
+	<div class="player" style="left: 70%; top: 50%;" data-id="9">
+            <img src="Poze\Ladaru.jpg" alt="Ladaru">
+            <span class="player-name">Ladaru Florin</span>
+        </div>
+	<div class="player" style="left: 70%; top: 50%;" data-id="13">
+            <img src="Poze\Culda.jpg" alt="Culda2">
+            <span class="player-name">Culda Vasile</span>
+        </div>
+	<div class="player" style="left: 70%; top: 50%;" data-id="14">
+            <img src="Poze\Culda.jpg" alt="Culda3">
+            <span class="player-name">Culda Vasile</span>
+        </div>
+	<div class="player" style="left: 70%; top: 50%;" data-id="15">
+            <img src="Poze\Culda.jpg" alt="Culda4">
+            <span class="player-name">Culda Vasile</span>
+        </div>
+	<div class="player" style="left: 70%; top: 50%;" data-id="16">
+            <img src="Poze\Ladaru.jpg" alt="Ladaru1">
+            <span class="player-name">Ladaru Florin</span>
+        </div>
+	<div class="player" style="left: 70%; top: 50%;" data-id="17">
+            <img src="Poze\Ladaru.jpg" alt="Ladaru2">
+            <span class="player-name">Ladaru Florin</span>
+        </div>
+	<div class="player" style="left: 70%; top: 50%;" data-id="18">
+            <img src="Poze\Ladaru.jpg" alt="Ladaru3">
+            <span class="player-name">Ladaru Florin</span>
+        </div>
+   	<div class="player" style="left: 70%; top: 50%;" data-id="19">
+            <img src="Poze\Ladaru.jpg" alt="Ladaru4">
+            <span class="player-name">Ladaru Florin</span>
+        </div>
+	<div class="player" style="left: 70%; top: 50%;" data-id="21">
+            <img src="Poze\Hoanca.jpg" alt="Hoanca">
+            <span class="player-name">Hoanca Alexandra</span>
+        </div>
+
+    <script>
+        // Drag and Drop Functionality
+        let draggedPlayer = null;
+        let offsetX = 0, offsetY = 0;
+
+        // Load saved positions on page load
+        window.onload = () => {
+            const savedPositions3 = JSON.parse(localStorage.getItem('playerPositions3')) || {};
+            document.querySelectorAll('.player').forEach(player => {
+                const playerId = player.getAttribute('data-id');
+                const position = savedPositions3[playerId];
+                if (position) {
+                    player.style.left = position.left;
+                    player.style.top = position.top;
+                }
+            });
+        };
+
+        document.querySelectorAll('.player').forEach(player => {
+            player.addEventListener('mousedown', (e) => {
+                draggedPlayer = player;
+                offsetX = e.offsetX;
+                offsetY = e.offsetY;
+                draggedPlayer.style.cursor = 'grabbing';
+
+                const onMouseMove = (e) => {
+                    draggedPlayer.style.left = `${e.pageX - offsetX - draggedPlayer.offsetParent.offsetLeft}px`;
+                    draggedPlayer.style.top = `${e.pageY - offsetY - draggedPlayer.offsetParent.offsetTop}px`;
+                };
+
+                document.addEventListener('mousemove', onMouseMove);
+
+                const onMouseUp = () => {
+                    draggedPlayer.style.cursor = 'grab';
+                    document.removeEventListener('mousemove', onMouseMove);
+                    document.removeEventListener('mouseup', onMouseUp);
+
+                    // Save the new position to localStorage
+                    const playerId = draggedPlayer.getAttribute('data-id');
+                    const newPosition3 = {
+                        left: draggedPlayer.style.left,
+                        top: draggedPlayer.style.top
+                    };
+
+                    const savedPositions3 = JSON.parse(localStorage.getItem('playerPositions3')) || {};
+                    savedPositions3[playerId] = newPosition3;
+                    localStorage.setItem('playerPositions3', JSON.stringify(savedPositions3));
+
+                    draggedPlayer = null;
+                };
+
+                document.addEventListener('mouseup', onMouseUp);
+            });
+
+            // Double Click to Open Another HTML Page
+            player.addEventListener('dblclick', () => {
+                const playerId = player.getAttribute('data-id');
+                const playerPages = {
+                    "1": "Eftenoiu/EftenoiuCatalin.html",
+                    "2": "Lefter/LefterAbel.html",
+                    "3": "Ienciu/IenciuBocse.html", // Correct page for player 3
+                    "4": "Eftenoiu1/EftenoiuCatalin.html",
+                    "5": "Culda/CuldaVasile.html",
+                    "6": "Eftenoiu2/EftenoiuCatalin.html",
+                    "7": "Hoanca/HoancaAlexandra.html",
+                    "8": "Eftenoiu3/EftenoiuCatalin.html",
+                    "9": "Ladaru/LadaruFlorin.html",
+                    "10": "Eftenoiu4/EftenoiuCatalin.html",
+                
+                    "12": "Lefter/LefterAbel.html", 
+		    "13": "Culda2/CuldaVasile.html",
+		    "14": "Culda3/CuldaVasile.html",
+		    "15": "Culda4/CuldaVasile.html",
+		    "16": "Ladaru1/LadaruFlorin.html",
+		    "17": "Ladaru2/LadaruFlorin.html",
+		    "18": "Ladaru3/LadaruFlorin.html",
+		    "19": "Ladaru4/LadaruFlorin.html",
+		    "20": "Eftenoiu1/EftenoiuCatalin.html",
+		    "21": "Hoanca/HoancaAlexandra.html",
+
+                };
+
+                // Redirect to the corresponding player page
+                const redirectTo = playerPages[playerId] || `player-details.html?player=${playerId}`;
+                window.location.href = redirectTo;
+            });
+        });
+    </script>
+</body>
+</html>

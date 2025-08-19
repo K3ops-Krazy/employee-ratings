@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Split Page</title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #5A3ABF, #D13C8A, #FF4C1F, #FF5E1F, #FFD200);
+      overflow: hidden;
+      position: relative;
+    }
+
+    .wrapper {
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      overflow-y: auto;
+    }
+
+    .container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      padding: 20px;
+      align-items: center;
+    }
+
+    .item {
+      width: 480px;
+      height: 460px;
+      margin: 15px;
+      backdrop-filter: blur(5px);
+      background-color: rgba(255, 255, 255, 0.3);
+      border-radius: 60px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      font-size: 16px;
+      font-weight: bold;
+      color: #333;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .image-container{
+      width: 100%;
+      height: 100%;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      padding-top: 20px;
+    }
+
+    .image-container img {
+      width: 100%;
+      height: auto;
+      max-height: 190px;
+      object-fit: contain;
+    }
+
+    .title {
+      position: absolute;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 30px;
+      font-weight: bold;
+      color: #ffffff;
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+    }
+
+    .player-container {
+      position: absolute;
+	  margin-top: 120px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      transition: transform 0.3s ease;
+      cursor: grab;
+    }
+
+    .player-container:hover {
+      transform: scale(1.1);
+    }
+
+    .player-circle {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      overflow: hidden;
+      background-color: rgba(255, 255, 255, 0.3);
+      backdrop-filter: blur(8px);
+      border: 4px solid white;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.4);
+    }
+
+    .player-circle img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 50%;
+    }
+
+    .player-name {
+      margin-top: 10px;
+      font-size: 20px;
+      font-weight: bold;
+      color: white;
+      text-shadow: 1px 1px 3px black;
+      text-align: center;
+    }
+
+    .project-link,
+    .project-link1 {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 24px;
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      background-color: rgba(0, 0, 0, 0.5);
+      padding: 10px 20px;
+      border-radius: 10px;
+      z-index: 999;
+    }
+
+    .project-link {
+      bottom: 20px;
+    }
+
+    .project-link1 {
+      top: 20px;
+    }
+
+    .project-link:hover,
+    .project-link1:hover {
+      background-color: rgba(0, 0, 0, 0.7);
+    }
+
+	.person {
+     position: absolute;
+     text-align: center;
+     width: 150px;
+    }
+
+  </style>
+</head>
+<body>
+
+ <div class="wrapper">
+    <a href="ProjectBKPRepartitionHUD.html" class="project-link1">ProjectBKPRepartitionVision</a>
+    <a href="..\Index.html" class="project-link">Home</a>
+
+<div class="container">
+  <!-- Item 1 -->
+  <div class="item">
+    <div class="image-container">
+      <img src="../Poze/FPK FA Linia 1.png" alt="FPK FA Linia 1" />
+      <div class="title">VW HUD MQB</div>
+    </div>
+
+    <!-- Player inside item -->
+    <div class="player-container" data-id="4">
+      <div class="player-circle">
+        <img src="../Poze/Milotin.jpg" alt="Milotin" />
+      </div>
+      <div class="player-name">Milotin Catalin</div>
+    </div>
+  </div>
+
+  <!-- Item 2 -->
+  <div class="item">
+    <div class="image-container">
+      <img src="../Poze/FPK FA Linia 2.png" alt="FPK FA Linia 2" />
+      <div class="title">AUDI GEN 2</div>
+    </div>
+
+    <!-- Player inside item -->
+    <div class="player-container" data-id="1">
+      <div class="player-circle">
+        <img src="../Poze/Bencsik.jpg" alt="Bencsik" />
+      </div>
+      <div class="player-name">Bencsik Andrei</div>
+    </div>
+  </div>
+
+
+<div class="item">
+    <div class="image-container">
+      <img src="../Poze/BMW_AZV.png" alt="I-CAM" />
+      <div class="title">BMW HIGH 4</div>
+    </div>
+
+    <!-- Player inside item -->
+    <div class="player-container" data-id="7">
+      <div class="player-circle">
+        <img src="../Poze/Tatomir.jpg" alt="Tatomir" />
+      </div>
+      <div class="player-name">Tatomir Adrian Emanoil</div>
+    </div>
+  </div>
+
+
+<div class="item">
+    <div class="image-container">
+      <img src="../Poze/VS30 FA L1.png" alt="VS30 FA L1" />
+      <div class="title">MFA 2 HUD</div>
+    </div>
+
+    <!-- Player inside item -->
+    <div class="player-container" data-id="8">
+      <div class="player-circle">
+        <img src="../Poze/Cherlia.jpg" alt="Cherlia" />
+      </div>
+      <div class="player-name">Cherlia Gabriel</div>
+    </div>
+  </div>
+
+
+<div class="item">
+    <div class="image-container">
+      <img src="../Poze/VS30 FA L1.png" alt="VS30 FA L1" />
+      <div class="title">HUD 206</div>
+    </div>
+
+    <!-- Player inside item -->
+    <div class="player-container" data-id="2">
+      <div class="player-circle">
+        <img src="../Poze/Cazan.jpg" alt="Cazan" />
+      </div>
+      <div class="player-name">Cazan Sebastian Alin</div>
+    </div>
+  </div>
+
+
+<div class="item">
+    <div class="image-container">
+      <img src="../Poze/VS30 FA L1.png" alt="VS30 FA L1" />
+      <div class="title">HUD MMA</div>
+    </div>
+
+    <!-- Player inside item -->
+    <div class="player-container" data-id="5">
+      <div class="player-circle">
+        <img src="../Poze/Nitu.jpg" alt="Nitu" />
+      </div>
+      <div class="player-name">Nitu Alexandru</div>
+    </div>
+  </div>
+
+<div class="item">
+    <div class="image-container">
+      <img src="../Poze/BMW_AZV.png" alt="U25" />
+      <div class="title">PGU</div>
+    </div>
+
+    <!-- Player inside item -->
+    <div class="player-container" data-id="15">
+      <div class="player-circle">
+        <img src="../Poze/Nitu.jpg" alt="Nitu" />
+      </div>
+      <div class="player-name">Nitu Alexandru</div>
+    </div>
+  </div>
+
+
+<div class="item">
+    <div class="image-container">
+      <img src="../Poze/VS30 FA L1.png" alt="VS30 FA L1" />
+      <div class="title">Daimler MBEAM</div>
+    </div>
+
+    <!-- Player inside item -->
+    <div class="player-container" data-id="3">
+      <div class="player-circle">
+        <img src="../Poze/Duta.jpg" alt="Duta" />
+      </div>
+      <div class="player-name">Duta Mihail</div>
+    </div>
+  </div>
+
+
+<div class="item">
+    <div class="image-container">
+      <img src="../Poze/Display Assy L1.png" alt="Display Assy L1" />
+      <div class="title">IDBUZZ FORD HUD</div>
+    </div>
+
+    <!-- Player inside item -->
+    <div class="player-container" data-id="6">
+      <div class="player-circle">
+        <img src="../Poze/Plesa.jpg" alt="Plesa" />
+      </div>
+      <div class="player-name">Plesa Daniel</div>
+    </div>
+  </div>
+
+
+<div class="item">
+    <div class="image-container">
+      <img src="../Poze/BMW_AZV.png" alt="DCS" />
+      <div class="title">PSA</div>
+    </div>
+
+    <!-- Player inside item -->
+    <div class="player-container" data-id="13">
+      <div class="player-circle">
+        <img src="../Poze/Cazan.jpg" alt="Cazan" />
+      </div>
+      <div class="player-name">Cazan Sebastian Alin</div>
+    </div>
+  </div>
+
+
+<div class="item">
+    <div class="image-container">
+      <img src="../Poze/support.png" alt="Suport Engineering All Lines" />
+      <div class="title">Suport Engineering </div>
+    </div>
+
+    <!-- Player inside item -->
+    <div class="player-container" data-id="9">
+      <div class="player-circle">
+        <img src="../Poze/Narcisa.jpg" alt="Narcisa" />
+      </div>
+      <div class="player-name">Ostrovan Narcisa</div>
+    </div>
+  </div>
+
+
+<div class="item">
+     <div class="image-container">
+      <img src="../Poze/support.png" alt="Suport Engineering All Lines" />
+      <div class="title">Suport Engineering </div>
+    </div>
+
+    <!-- Player inside item -->
+    <div class="player-container" data-id="10">
+      <div class="player-circle">
+        <img src="../Poze/Nicola.jpg" alt="Nicola" />
+      </div>
+      <div class="player-name">Nicola Ionut Alin</div>
+    </div>
+  </div>
+
+
+<div class="item">
+    <div class="image-container">
+      <img src="../Poze/support.png" alt="Suport Engineering All Lines" />
+      <div class="title">Suport Engineering </div>
+    </div>
+
+    <!-- Player inside item -->
+    <div class="player-container" data-id="11">
+      <div class="player-circle">
+        <img src="../Poze/Tanasa.jpg" alt="Tanasa" />
+      </div>
+      <div class="player-name">Tanasa Florin Alexandru</div>
+    </div>
+</div>
+
+
+
+    
+
+		<script>
+   // Drag and Drop Functionality
+       let dragged = null;
+    let offsetX = 0, offsetY = 0;
+
+    const containers = document.querySelectorAll(".player-container");
+
+    containers.forEach(container => {
+      //const id = container.getAttribute("data-id");
+      //const saved = JSON.parse(localStorage.getItem("dragPos_" + id));
+      //if (saved) {
+        //container.style.left = saved.left;
+        //container.style.top = saved.top;
+     // }
+
+     
+
+      
+
+      
+
+
+      container.addEventListener("dblclick", () => {
+        const id = container.getAttribute("data-id");
+        const paths = {
+          "1": "Bencsik/BencsikAndrei.html",
+          "2": "Cazan/CazanSebastianAlin.html",
+		  "3": "Duta/DutaMihail.html",
+		  "4": "Milotin/MilotinCatalin.html",
+		  "5": "Nitu/NituAlexandru.html",
+		  "6": "Plesa/PlesaDaniel.html",
+		  "7": "Tatomir/TatomirAdrianEmanoil.html",
+		  "8": "Cherlia/CherliaGabriel.html",
+		  "9": "Narcisa/OstrovanNarcisa.html",
+		  "10": "Nicola/NicolaIonutAlin.html",
+		  "11": "Tanasa/TanasaFlorinAlexandru.html",
+		  "12": "Bencsik/BencsikAndrei.html",
+		  "13": "Cazan/CazanSebastianAlin.html",
+		  "14": "Milotin/MilotinCatalin.html",
+		  "15": "Nitu/NituAlexandru.html"
+		  
+          // Adaugă aici alți angajați după caz
+        };
+        if (paths[id]) {
+          window.location.href = paths[id];
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>

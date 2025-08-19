@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skill Modifier</title>
+    <link rel="stylesheet" href="pagina_evaluari.css">
+	
+</head>
+<body>
+<a href="../../ProjectRepartitionMolding.html" class="project-link">Home</a>
+    <div class="container">
+    <div class="left-panel">
+        <div class="employee-info">
+            <img src="Buse.jpg" alt="Skill Background" class="background-image">
+            <h2 class="employee-name">Buse Cristian</h2>
+            <p class="employee-position">Production Technology Engineer</p>
+        </div>
+    </div>
+
+
+    <div class="right-panel">
+        <div class="skills-container">
+                <div class="skill-row">
+                    <h1>Abilitati</h1>
+                    <div class="stars" id="stars-abilitati"></div>
+                    <div class="rating-text" id="rating-abilitati">Loading...</div>
+                    <button class="action-button" onclick="openPage('AbilitatiBuseCristian.html')">Rate this skill</button>
+                </div>
+
+                <div class="skill-row">
+                    <h1>Atitudini</h1>
+                    <div class="stars" id="stars-atitudini"></div>
+                    <div class="rating-text" id="rating-atitudini">Loading...</div>
+                    <button class="action-button" onclick="openPage('AtitudiniBuseCristian.html')">Rate this skill</button>
+                </div>
+
+                <div class="skill-row">
+                    <h1>Cunostinte</h1>
+                    <div class="stars" id="stars-cunostinte"></div>
+                    <div class="rating-text" id="rating-cunostinte">Loading...</div>
+                    <button class="action-button" onclick="openPage('CunostinteBuseCristian.html')">Rate this skill</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+    function openPage(page) {
+        window.location.href = page;
+    }
+
+    function displayStars(containerId, rating) {
+        const container = document.getElementById(containerId);
+        container.innerHTML = '';
+        const fullStars = Math.floor(rating);
+        const hasHalfStar = rating % 1 !== 0;
+
+        for (let i = 0; i < fullStars; i++) {
+            container.innerHTML += '<img src="F.png" class="star">';
+        }
+        if (hasHalfStar) {
+            container.innerHTML += '<img src="R.png" class="star">';
+        }
+        for (let i = fullStars + (hasHalfStar ? 1 : 0); i < 5; i++) {
+            container.innerHTML += '<img src="E.png" class="star">';
+        }
+    }
+
+    function calculateMeanRating(skillKeys) {
+        let totalRating = 0;
+        let count = 0;
+
+        skillKeys.forEach(skill => {
+            const rating = parseFloat(localStorage.getItem(skill) || 0);
+            if (rating) {
+                totalRating += rating;
+                count++;
+            }
+        });
+
+        return count > 0 ? (totalRating / count).toFixed(1) : 0;
+    }
+
+    function initializePage() {
+        const abilitatiSkills = [
+            "Planificare-si-Organizare",
+            "Coordonare-si-Monitorizare",
+            "Comunicare",
+            "Relationare",
+            "Setarea Obiectivelor",
+            "Evaluarea Performantei",
+            "Influentare"
+        ];
+        const atitudiniSkills = [
+            "Increzator-in-sine",
+            "Integru",
+            "Onest",
+	    "Optimist",
+	    "Entuziast",
+	    "Dedicat"
+        ];
+        const cunostinteSkills = [
+            "Optics-Skills",
+            "Hardware-Skills",
+            "Software-Skills",
+	    "Quality-Concepts-Knowledge",
+	    "Responsible-for-Change-Management",
+	    "Project-Management"
+        ];
+
+        const abilitatiMean = calculateMeanRating(abilitatiSkills);
+        const atitudiniMean = calculateMeanRating(atitudiniSkills);
+        const cunostinteMean = calculateMeanRating(cunostinteSkills);
+
+        document.getElementById('rating-abilitati').textContent = `Mean Rating: ${abilitatiMean}/5`;
+        document.getElementById('rating-atitudini').textContent = `Mean Rating: ${atitudiniMean}/5`;
+        document.getElementById('rating-cunostinte').textContent = `Mean Rating: ${cunostinteMean}/5`;
+
+        displayStars('stars-abilitati', abilitatiMean);
+        displayStars('stars-atitudini', atitudiniMean);
+        displayStars('stars-cunostinte', cunostinteMean);
+    }
+
+    // Initialize the page
+    initializePage();
+</script>
+
+</body>
+</html>

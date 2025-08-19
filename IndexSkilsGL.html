@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Split Page</title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+    }
+
+    .top-bar {
+      width: 100%;
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      padding: 50px 60px;
+      position: fixed;
+      top: 0;
+      left: 0;
+      background-color: rgba(255, 255, 255, 0.2); /* bară albă */
+      z-index: 1000;
+      backdrop-filter: blur(8px);
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+    }
+
+    .project-link,
+    .project-link1 {
+      font-size: 30px;
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      background-color: transparent;
+      padding: 12px 24px;
+      border-radius: 12px;
+      border: 2px solid transparent;
+      transition: all 0.4s ease;
+      position: relative;
+      z-index: 1;
+      overflow: hidden;
+    }
+
+    .project-link:hover,
+    .project-link1:hover {
+      background: linear-gradient(135deg, #5A3ABF, #D13C8A, #FF4C1F, #FFD200);
+      color: white;
+      background-size: 400% 400%;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      animation: gradientShift 5s ease infinite;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #5A3ABF, #D13C8A, #FF4C1F, #FF5E1F, #FFD200);
+      position: relative;
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
+      background-size: 400% 400%;
+      animation: gradientShift 15s ease infinite;
+      overflow-y: auto;
+    }
+
+    @keyframes gradientShift {
+      0% {
+        background-position: 0% 50%;
+      }
+      50% {
+        background-position: 100% 50%;
+      }
+      100% {
+        background-position: 0% 50%;
+      }
+    }
+
+
+    .wrapper {
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      overflow-y: auto;
+    }
+
+    .container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      padding: 20px;
+      align-items: center;
+    }
+
+    .item {
+      width: 480px;
+      height: 500px;
+      margin: 15px;
+      backdrop-filter: blur(5px);
+      background-color: rgba(255, 255, 255, 0.3);
+      border-radius: 60px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      font-size: 16px;
+      font-weight: bold;
+      color: #333;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .image-container{
+      width: 100%;
+      height: 100%;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      padding-top: 20px;
+    }
+
+    .image-container img {
+      width: 100%;
+      height: auto;
+      max-height: 190px;
+      object-fit: contain;
+    }
+
+    .title {
+      position: absolute;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 25px;
+      font-weight: bold;
+      color: #ffffff;
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+    }
+
+    .player-container {
+      position: absolute;
+	  margin-top: 70px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      transition: transform 0.3s ease;
+      cursor: grab;
+    }
+
+    .player-container:hover {
+      transform: scale(1.1);
+    }
+
+    .player-circle {
+      width: 170px;
+      height: 170px;
+      border-radius: 50%;
+      overflow: hidden;
+      background-color: rgba(255, 255, 255, 0.3);
+      backdrop-filter: blur(8px);
+      border: 4px solid white;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.4);
+    }
+
+    .player-circle img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 50%;
+    }
+
+    .player-name {
+      margin-top: 10px;
+      font-size: 20px;
+      font-weight: bold;
+      color: white;
+      text-shadow: 1px 1px 3px black;
+      text-align: center;
+    }
+
+  </style>
+</head>
+<body>
+
+  <div class="wrapper">
+    <div class="top-bar">
+      <a href="ProjectBKPRepartitionAssyTest.html" class="project-link">ProjectBKPRepartitionVision</a>
+      <a href="Index.html" class="project-link">Home</a>
+    </div>
+    
+<div class="container">
+  <!-- Item 1 -->
+  <div class="item">
+    <div class="image-container">
+      <img src="Poze/Bobic_logo.png" alt="Vision" />
+      <div class="title">Group Leader Vision and Automation</div>
+    </div>
+
+    <!-- Player inside item -->
+    <div class="player-container" data-id="1">
+      <div class="player-circle">
+        <img src="Poze/Bobic.jpg" alt="Bobic" />
+      </div>
+      <div class="player-name">Bobic Marius</div>
+    </div>
+  </div>
+  
+  <div class="item">
+    <div class="image-container">
+      <img src="Poze/HUD (1).png" alt="HUD" />
+      <div class="title">Group Leader HUD</div>
+    </div>
+
+    <!-- Player inside item -->
+    <div class="player-container" data-id="2">
+      <div class="player-circle">
+        <img src="Poze/Turcu.jpg" alt="Turcu" />
+      </div>
+      <div class="player-name">Turcu Marius</div>
+    </div>
+  </div>
+  
+  <div class="item">
+    <div class="image-container">
+      <img src="Poze/ICTFCT (1).png" alt="ICTFCT" />
+      <div class="title">Group Leader ICT and FCT</div>
+    </div>
+
+    <!-- Player inside item -->
+    <div class="player-container" data-id="3">
+      <div class="player-circle">
+        <img src="Poze/Grecu.jpg" alt="Grecu" />
+      </div>
+      <div class="player-name">Alex Grecu</div>
+    </div>
+  </div>
+  
+  <div class="item">
+    <div class="image-container">
+      <img src="Poze/Molding.png" alt="" />
+      <div class="title">Group Leader Molding and SMT</div>
+    </div>
+
+    <!-- Player inside item -->
+    <div class="player-container" data-id="4">
+      <div class="player-circle">
+        <img src="Poze/Dan.jpg" alt="Dan" />
+      </div>
+      <div class="player-name">Dan Strambu</div>
+    </div>
+  </div>
+  
+  <div class="item">
+    <div class="image-container">
+      <img src="Poze/PreassyFA (1).png" alt="PreassyFA" />
+      <div class="title">Group Leader Preassy FA</div>
+    </div>
+
+    <!-- Player inside item -->
+    <div class="player-container" data-id="5">
+      <div class="player-circle">
+        <img src="Poze/Chis.jpg" alt="Chis" />
+      </div>
+      <div class="player-name">Chis Marius</div>
+    </div>
+  </div>
+  
+  <div class="item">
+    <div class="image-container">
+      <img src="Poze/Preassy (1).png" alt="Preassy" />
+      <div class="title">Group Leader Preassy</div>
+    </div>
+
+    <!-- Player inside item -->
+    <div class="player-container" data-id="6">
+      <div class="player-circle">
+        <img src="Poze/Sorin.jpg" alt="Sorin" />
+      </div>
+      <div class="player-name">David Sorin</div>
+    </div>
+  </div>
+
+  <script>
+    let dragged = null;
+    let offsetX = 0, offsetY = 0;
+
+    const containers = document.querySelectorAll(".player-container");
+
+    containers.forEach(container => {
+      //const id = container.getAttribute("data-id");
+      //const saved = JSON.parse(localStorage.getItem("dragPos_" + id));
+      //if (saved) {
+        //container.style.left = saved.left;
+        //container.style.top = saved.top;
+     // }
+      container.addEventListener("dblclick", () => {
+        const id = container.getAttribute("data-id");
+        const paths = {
+          "1": "VisionCluster/Bobic/BobicMarius.html",
+          "2": "TesteHUD/Turcu/TurcuMarius.html",
+		  "3": "TestePreAssy/Grecu/GrecuAlex.html",
+		  "4": "MoldingSMT/Strambu/StrambuDan.html",
+		  "5": "AsamblareFA/Chis/ChisMarius.html",
+		  "6": "AsamblarePreassy/Sorin/DavidSorin.html",  
+          // Adaugă aici alți angajați după caz
+        };
+        if (paths[id]) {
+          window.location.href = paths[id];
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>

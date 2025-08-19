@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://apis.google.com/js/api.js" async defer></script>
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+    <title>Skill Modifier</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #f4f4f4;
+            flex-direction: column;
+        }
+        .container { text-align: center; }
+        .background-image { width: 200px; margin-bottom: 20px; border: 1px solid #ccc; }
+        .skills-container { display: flex; flex-direction: column; gap: 20px; width: 700px; }
+        .skill-row { display: flex; justify-content: space-between; align-items: center; }
+        .stars { display: flex; gap: 5px; cursor: pointer; }
+        .star { font-size: 30px; }
+        .rating-text { font-size: 18px; margin-left: 10px; }
+        .previous-ratings { margin-top: 10px; font-size: 16px; color: #555; }
+        #loginBtn { margin-top: 20px; padding: 10px 20px; font-size: 16px; cursor: pointer; }
+    </style>
+</head>
+<body style="display:none;">
+    <div class="container">
+        <img src="Culda.jpg" alt="Skill Background" class="background-image">
+        <div class="skills-container">
+            <h1><a href="Notite6.html" target="_blank">Observatii</a></h1>
+
+            <div class="skill-row">
+                <span>Planificare si Organizare</span>
+                <div class="stars" data-skill="Planificare-si-Organizare3">
+                    <span class="star" data-value="1">☆</span>
+                    <span class="star" data-value="2">☆</span>
+                    <span class="star" data-value="3">☆</span>
+                    <span class="star" data-value="4">☆</span>
+                    <span class="star" data-value="5">☆</span>
+                </div>
+                <span class="rating-text" id="Planificare-si-Organizare3-rating">Rating: 0/5</span>
+                <div class="previous-ratings" id="Planificare-si-Organizare3-history"></div>
+            </div>
+
+            <div class="skill-row">
+                <span>Coordonare si Monitorizare</span>
+                <div class="stars" data-skill="Coordonare-si-Monitorizare3">
+                    <span class="star" data-value="1">☆</span>
+                    <span class="star" data-value="2">☆</span>
+                    <span class="star" data-value="3">☆</span>
+                    <span class="star" data-value="4">☆</span>
+                    <span class="star" data-value="5">☆</span>
+                </div>
+                <span class="rating-text" id="Coordonare-si-Monitorizare3-rating">Rating: 0/5</span>
+                <div class="previous-ratings" id="Coordonare-si-Monitorizare3-history"></div>
+            </div>
+        </div>
+        <button id="loginBtn">Login cu Google</button>
+    </div>
+
+    <script>
+    // -------------------- PASSWORD PROTECTION --------------------
+    const correctPassword = "password";
+    const userPassword = prompt("Enter the password to access this page:");
+    if (userPassword === correctPassword) {
+        document.body.style.display = "flex";
+    } else {
+        alert("Incorrect password. Access denied.");
+        window.location.href = "https://www.google.com";
+    }
+
+    // -------------------- GOOGLE API CONFIG --------------------
+    const CLIENT_ID = "1009720094130-d5jp1d1lmkhrvje8b67vmqe71jtosn5o.apps.googleusercontent.com"; 
+    const API_KEY = "AIzaSyCl3GDviQZj10-0TGUzfp7jSfKD-dBmQ4I";
+    const SCOPES = "https://www.googleapis.com/auth/spreadsheets";
+    const SHEET_ID = "1dCV_mbZGDUS9E48gYKDu_HHHHNjIaCqO3tUKvL3bCG8";
+    let tokenClient;
+    let gapiInited = false;
+    let gisInited = false;
+
+    function gapiInit() {
+        gapi.load('client', async () => {
+            await gapi.client.init({ apiKey: API_KEY });
+            gapiInited = true;
+            maybeEnableLogin();
+        });
+    }
+
+    function maybeEnableLogin() {
+        if (gapiInited && gisInited) {
+            document.getElementById("loginBtn").style.display = "inline-block";
+        }
+    }
+
+    function gisInit() {
+        gisInited = true;
+        maybeEnableLogin();
+    }
+
+    window.addEventListener('load', () => {
+        gapiInit();
+        gisInit();
+    });
+
+    function handleAuthClick() {
+        tokenClient = google.accounts.oauth2.initTokenClient({
+            client_id: CLIENT_ID,
+            scope: SCOPES,
+            callback: async (response) => {
+                if (response.error) {
+                    console.error(response);
+                    alert("Eroare la autentificare!");
+                    return;
+                }
+                console.log("✅ Autentificat cu succes!");
+                document.getElementById("loginBtn").style.display = "none";
+            },
+        });
+        tokenClient.requestAccessToken();
+    }
+
+    document.getElementById("loginBtn").addEventListener("click", handleAuthClick);
+
+    // -------------------- STAR RATING --------------------
+    function updateStars(starsDiv, rating) {
+        const stars = starsDiv.querySelectorAll('.star');
+        stars.forEach(star => {
+            star.textContent = parseInt(star.dataset.value) <= rating ? '★' : '☆';
+        });
+    }
+
+    function createStarDisplay(rating) {
+        let display = '';
+        for (let i = 1; i <= 5; i++) {
+            display += i <= rating ? '★' : '☆';
+        }
+        return display;
+    }
+
+    function loadPreviousRatings(skillName) {
+        const ratingsHistory = JSON.parse(localStorage.getItem(`${skillName}-history`) || "[]");
+        const historyContainer = document.getElementById(`${skillName}-history`);
+        historyContainer.innerHTML = ratingsHistory.map(r => createStarDisplay(r)).join(' ');
+        return ratingsHistory;
+    }
+
+    async function saveRating(skillName, rating) {
+        const ratingsHistory = loadPreviousRatings(skillName);
+        ratingsHistory.push(rating);
+        localStorage.setItem(`${skillName}-history`, JSON.stringify(ratingsHistory));
+        document.getElementById(`${skillName}-rating`).textContent = `Rating: ${rating}/5`;
+        updateStars(document.querySelector(`.stars[data-skill="${skillName}"]`), rating);
+
+        // 🔹 Trimite ratingul in Google Sheets dacă suntem autentificați
+        try {
+            const accessToken = gapi.client.getToken()?.access_token || tokenClient?.access_token;
+            if (!accessToken) return; // nu e autentificat
+
+            await gapi.client.request({
+                path: `https://sheets.googleapis.com/v4/spreadsheets/${SHEET_ID}/values/${skillName}!A1:append`,
+                method: "POST",
+                params: { valueInputOption: "RAW" },
+                body: { values: [[new Date().toLocaleString(), rating]] },
+            });
+            console.log(`✅ Rating trimis pentru ${skillName}`);
+        } catch (err) {
+            console.error("Eroare la trimiterea ratingului:", err);
+        }
+    }
+
+    document.querySelectorAll('.stars').forEach(starsDiv => {
+        const skillName = starsDiv.dataset.skill;
+        loadPreviousRatings(skillName).forEach(r => updateStars(starsDiv, r));
+        starsDiv.querySelectorAll('.star').forEach(star => {
+            star.addEventListener('click', () => {
+                const value = parseInt(star.dataset.value);
+                saveRating(skillName, value);
+            });
+        });
+    });
+    </script>
+</body>
+</html>

@@ -1,0 +1,55 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Station Details</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    body { margin: 0; font-family: Arial, sans-serif; background:#0f1115; color:#fff; display:flex; flex-direction:column; align-items:center; min-height:100vh; }
+    .wrap { max-width: 900px; width: 100%; padding: 24px; }
+    h1 { margin: 16px 0 8px; font-size: 28px; }
+    .badge { display:inline-block; padding:6px 12px; border-radius: 999px; background:#ffc400; color:#111; font-weight:bold; }
+    .card { background: rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.08); border-radius:16px; padding:16px; margin-top:16px; }
+    .grid { display:grid; grid-template-columns: repeat(auto-fill, minmax(180px,1fr)); gap:12px; margin-top:12px; }
+    .emp { background: rgba(255,255,255,0.08); border-radius:12px; padding:12px; text-align:center; }
+    a.btn { margin-top:20px; display:inline-block; background:#ffc400; color:#111; text-decoration:none; font-weight:bold; padding:10px 16px; border-radius:10px; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <span class="badge">Station</span>
+    <h1 id="stationTitle"></h1>
+    <div class="card">
+      <strong>Employees assigned</strong>
+      <div id="employees" class="grid"></div>
+    </div>
+    <a href="javascript:history.back()" class="btn">← Back</a>
+  </div>
+  <script>
+    const params = new URLSearchParams(location.search);
+    const name = params.get('name') || 'Unknown Station';
+    document.getElementById('stationTitle').textContent = name;
+
+    // TODO: Plug in real data here. For now, show placeholders.
+    // You can edit this map or load via fetch('employees.json').
+    const roster = {
+      'PGU 2': ['TEST ENGINEER','NPL','quality','process engineer'],
+      'WP2': ['Alex Pop','Mara I.'],
+      'FCT': ['Tester A','Tester B'],
+      'ICT': ['Inspector X','Inspector Y']
+    };
+
+    // Find entries that start with the station name (exact or prefix)
+    const list = roster[name] || Object.entries(roster).find(([k]) => name.startsWith(k))?.[1] || ['(add names in station.html roster map)'];
+
+    const container = document.getElementById('employees');
+    list.forEach(n => {
+      const div = document.createElement('div');
+      div.className = 'emp';
+      div.textContent = n;
+      container.appendChild(div);
+    });
+  </script>
+</body>
+</html>

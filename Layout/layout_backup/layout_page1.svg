@@ -1,0 +1,197 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1684 2384" width="1684" height="2384">
+  <style>
+    .bg { image-rendering: auto; }
+
+    /* hotspots */
+    a .hs {
+      fill: rgba(255, 204, 0, 0.18);
+      stroke: rgba(255, 204, 0, 0.9);
+      stroke-width: 1.5;
+      rx: 4; ry: 4;
+      opacity: 0;
+      transition: opacity .12s ease;
+      pointer-events: all; /* clickable even if transparent */
+    }
+    a:hover .hs, a:focus .hs { opacity: 1; }
+
+    /* labels (only on hover/focus) */
+    .lbl {
+      fill: #fff;
+      font: 12px/1.2 Arial, sans-serif;
+      paint-order: stroke;
+      stroke: #000; stroke-width: 1px;
+      opacity: 0;
+      pointer-events: none;
+    }
+    a:hover .lbl, a:focus .lbl { opacity: 1; }
+
+    /* remove default focus outline on anchors (we highlight the box instead) */
+    a:focus { outline: none; }
+  </style>
+
+  <!-- background image; doesn't intercept clicks -->
+  <image class="bg"
+         href="layout_page1.jpg"
+         x="0" y="0" width="1684" height="2384"
+         style="pointer-events:none" />
+
+  <!-- ==== Hotspots ==== -->
+
+  <a href="station.html?name=206%20HUD/PSA%20L2" target="_top" tabindex="0">
+    <title>206 HUD/PSA L2</title>
+    <rect class="hs" x="24.9" y="1096.3" width="302.2" height="46.2" />
+    <text class="lbl" x="176.0" y="1690.3" text-anchor="middle">206 HUD/PSA L2</text>
+  </a>
+
+  <a href="station.html?name=MMA%20HUD" target="_top" tabindex="0">
+    <title>MMA HUD</title>
+    <rect class="hs" x="412.6" y="1662.9" width="186.6" height="46.2" />
+    <text class="lbl" x="505.9" y="1656.9" text-anchor="middle">MMA HUD</text>
+  </a>
+
+  <a href="station.html?name=PGU%202" target="_top" tabindex="0">
+    <title>PGU 2</title>
+    <rect class="hs" x="722.6" y="1632.8" width="117.4" height="46.2" />
+    <text class="lbl" x="781.3" y="1626.8" text-anchor="middle">PGU 2</text>
+  </a>
+
+  <!-- PGU 1: fixed mismatched label / tiny height -->
+  <a href="station.html?name=PGU%201" target="_top" tabindex="0">
+    <title>PGU 1</title>
+    <rect class="hs" x="610.0" y="1640.2" width="110.8" height="80.2" />
+    <text class="lbl" x="672.4" y="1754.2" text-anchor="middle">PGU 1</text>
+  </a>
+
+  <a href="station.html?name=206%20 HUD PSA L1" target="_top" tabindex="0">
+    <title>206 HUD PSA L1</title>
+    <rect class="hs" x="223.6" y="1500.8" width="300.6" height="80.6" />
+    <text class="lbl" x="424.4" y="1574.8" text-anchor="middle">206 HUD PSA L1</text>
+  </a>
+
+  <a href="station.html?name=iCam DCS OPTICAL MODULE" target="_top" tabindex="0">
+    <title>iCam DCS OPTICAL MODULE</title>
+    <rect class="hs" x="900.3" y="1080" width="500" height="80" />
+    <text class="lbl" x="1320.1" y="1170" text-anchor="middle">iCam DCS OPTICAL MODULE</text>
+  </a>
+
+  <a href="station.html?name=BMW AZV DCS U 25 MINI" target="_top" tabindex="0">
+    <title>BMW AZV DCS U 25 MINI</title>
+    <rect class="hs" x="100.3" y="1020" width="720" height="100" />
+    <text class="lbl" x="750.1" y="1120" text-anchor="middle">BMW AZV DCS U 25 MINI</text>
+  </a>
+
+  <a href="station.html?name=VW MQB 3" target="_top" tabindex="0">
+    <title>VW MQB 3</title>
+    <rect class="hs" x="50.3" y="1150" width="200" height="250" />
+    <text class="lbl" x="100.1" y="1390" text-anchor="middle">VW MQB 3</text>
+  </a>
+
+   <a href="station.html?name=VW MQB 1" target="_top" tabindex="0">
+    <title>VW MQB 1</title>
+    <rect class="hs" x="250.3" y="1150" width="125" height="250" />
+    <text class="lbl" x="300.1" y="1390" text-anchor="middle">VW MQB 1</text>
+  </a>
+
+   <a href="station.html?name=VW MQB 2" target="_top" tabindex="0">
+    <title>VW MQB 2</title>
+    <rect class="hs" x="400.3" y="1150" width="125" height="250" />
+    <text class="lbl" x="450.1" y="1390" text-anchor="middle">VW MQB 2</text>
+  </a>
+
+  <a href="station.html?name=Audi Gen 2" target="_top" tabindex="0">
+    <title>Audi Gen 2</title>
+    <rect class="hs" x="550.3" y="1150" width="270" height="250" />
+    <text class="lbl" x="800.1" y="1390" text-anchor="middle">Audi Gen 2</text>
+  </a>
+
+  <a href="station.html?name=Mbeam Preassy" target="_top" tabindex="0">
+    <title>Mbeam Preassy</title>
+    <rect class="hs" x="600.3" y="1420" width="230" height="80" />
+    <text class="lbl" x="680.1" y="1500" text-anchor="middle">Mbeam Preassy</text>
+  </a>
+
+  <a href="station.html?name=MMA 206" target="_top" tabindex="0">
+    <title>MMA 206</title>
+    <rect class="hs" x="420.3" y="1420" width="140" height="100" />
+    <text class="lbl" x="580.1" y="1500" text-anchor="middle">MMA 206</text>
+  </a>
+
+  <a href="station.html?name=Underfill" target="_top" tabindex="0">
+    <title>Underfill</title>
+    <rect class="hs" x="1400.3" y="1100" width="200" height="80" />
+    <text class="lbl" x="1420.1" y="1170" text-anchor="middle">Underfill</text>
+  </a>
+
+  <a href="station.html?name=MFA 2" target="_top" tabindex="0">
+    <title>MFA 2</title>
+    <rect class="hs" x="1350.3" y="570" width="120" height="240" />
+    <text class="lbl" x="1450.1" y="800" text-anchor="middle">MFA 2</text>
+  </a>
+
+  <a href="station.html?name=Preassy MFA 2" target="_top" tabindex="0">
+    <title>Preassy MFA 2</title>
+    <rect class="hs" x="1210.3" y="570" width="120" height="240" />
+    <text class="lbl" x="1450.1" y="800" text-anchor="middle">Preassy MFA 2</text>
+  </a>
+
+  <a href="station.html?name=Preassy VS30" target="_top" tabindex="0">
+    <title>Preassy VS30</title>
+    <rect class="hs" x="1060.3" y="570" width="120" height="240" />
+    <text class="lbl" x="1450.1" y="800" text-anchor="middle">Preassy VS30</text>
+  </a>
+
+  <a href="station.html?name=VS30" target="_top" tabindex="0">
+    <title>VS30</title>
+    <rect class="hs" x="900.3" y="570" width="120" height="240" />
+    <text class="lbl" x="1450.1" y="800" text-anchor="middle">VS30</text>
+  </a>
+
+  <a href="station.html?name=HUD 206" target="_top" tabindex="0">
+    <title>HUD 206</title>
+    <rect class="hs" x="1500.3" y="570" width="120" height="400" />
+    <text class="lbl" x="1550.1" y="980" text-anchor="middle">HUD 206</text>
+  </a>
+
+  <a href="station.html?name=FIAT BEV" target="_top" tabindex="0">
+    <title>FIAT BEV</title>
+    <rect class="hs" x="1350.3" y="900" width="120" height="130" />
+    <text class="lbl" x="1390.1" y="1050" text-anchor="middle">FIAT BEV</text>
+  </a>
+
+  <a href="station.html?name=Audi Gen2" target="_top" tabindex="0">
+    <title>Audi Gen2</title>
+    <rect class="hs" x="900.3" y="850" width="400" height="200" />
+    <text class="lbl" x="1290.1" y="1050" text-anchor="middle">Audi Gen2</text>
+  </a>
+
+  <!-- placeholders you’ll adjust as you finish placement -->
+  <a href="station.html?name=DCS" target="_top" tabindex="0">
+    <title>DCS</title>
+    <rect class="hs" x="900" y="1200" width="700" height="230" />
+    <text class="lbl" x="1600" y="1414" text-anchor="middle">DCS</text>
+  </a>
+
+  <a href="station.html?name=VW MQB FPK2" target="_top" tabindex="0">
+    <title>VW MQB FPK2</title>
+    <rect class="hs" x="950" y="1720" width="180" height="95" />
+    <text class="lbl" x="1015" y="1814" text-anchor="middle">VW MQB FPK2</text>
+  </a>
+
+  <a href="station.html?name=VW MQB FPK3" target="_top" tabindex="0">
+    <title>VW MQB FPK3</title>
+    <rect class="hs" x="950" y="1500" width="200" height="130" />
+    <text class="lbl" x="1030" y="1614" text-anchor="middle">VW MQB FPK3</text>
+  </a>
+
+  <a href="station.html?name=Preassy VW MQB FPK" target="_top" tabindex="0">
+    <title>Preassy VW MQB FPK</title>
+    <rect class="hs" x="1280" y="1500" width="220" height="135" />
+    <text class="lbl" x="1515" y="1614" text-anchor="middle">Preassy VW MQB FPK</text>
+  </a>
+
+  <a href="station.html?name=VW MQB FPK1" target="_top" tabindex="0">
+    <title>VW MQB FPK1</title>
+    <rect class="hs" x="1350" y="1700" width="250" height="100" />
+    <text class="lbl" x="1615" y="1814" text-anchor="middle">VW MQB FPK1</text>
+  </a>
+</svg>

@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Split Page</title>
+    <style>
+        /* Basic Reset */
+        body {
+      font-family: Arial, sans-serif;
+  background: linear-gradient(135deg, #5A3ABF, #D13C8A, #FF4C1F, #FF5E1F, #FFD200);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+    }
+
+
+       /* Basic Styling */
+        body, html {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            height: 100%;
+            background-color: #f4f4f4;
+        }
+
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .item {
+            width: 480px;
+            height:460px;
+            margin: 15px;
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            font-size: 16px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .item img {
+            max-width: 70%;
+            max-height: 70%;
+            border-radius: 10px;
+        }
+
+        .title {
+            position: absolute;
+            Bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 30px;
+            font-weight: bold;
+            color: #000000;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+        }
+
+        .image-container {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+
+        .image-container img {
+            object-fit: cover;
+            border-radius: 10px;
+        }
+
+
+        /* Players */
+        .player {
+            width: 140px;
+            height: 160px;
+            background-color: #ffff00;
+            border-radius: 20%;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: absolute;
+            cursor: grab;
+        }
+
+        .player img {
+            width: 90%;
+            height: 70%;
+            object-fit: cover;
+        }
+
+        .player-name {
+            height: 90%; /* Reserve space for the name */
+            font-size: 22px;
+            color: #000000;
+            text-align: center;
+            width: 100%;
+            box-sizing: border-box;
+            margin-top: 2px;
+        }
+
+        .project-link {
+            position: absolute;
+            top: 20px; /* Adjust as needed to control the distance from the top */
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 24px;
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            z-index: 10; /* Ensure it's above the field */
+            background-color: rgba(0, 0, 0, 0.5); /* Optional: Background color for visibility */
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        .project-link:hover {
+            background-color: rgba(0, 0, 0, 0.7); /* Optional: Change background color on hover */
+        }
+	
+	.project-link {
+            position: absolute;
+            top: 20px; /* Adjust as needed to control the distance from the top */
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 24px;
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            z-index: 10; /* Ensure it's above the field */
+            background-color: rgba(0, 0, 0, 0.5); /* Optional: Background color for visibility */
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        .project-link:hover {
+            background-color: rgba(0, 0, 0, 0.7); /* Optional: Change background color on hover */
+        }
+	.project-link1 {
+            position: absolute;
+            top: 20px; /* Adjust as needed to control the distance from the top */
+            left: 500%;
+            transform: translateX(-50%);
+            font-size: 24px;
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            z-index: 10; /* Ensure it's above the field */
+            background-color: rgba(0, 0, 0, 0.5); /* Optional: Background color for visibility */
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        .project-link:hover {
+            background-color: rgba(0, 0, 0, 0.7); /* Optional: Change background color on hover */
+        }
+
+
+    </style>
+</head>
+<body>
+<a href="../Index.html" class="project-link">Home</a>
+	<body>
+    <div class="container">
+        <div class="item">
+            <div class="image-container">
+                <img src="../Poze\FPK FA Linia 1.jpg" alt="FPK FA Linia 1">
+                <div class="title">VW HUD MQB</div>
+            </div>
+        </div>
+
+        <!-- Project 2 -->
+        <div class="item">
+            <div class="image-container">
+                <img src="../Poze\FPK FA Linia 2.jpg" alt="FPK FA Linia 2">
+                <div class="title">Audi Gen 2</div>
+            </div>
+        </div>
+
+        <!-- Project 3 -->
+        <div class="item">
+            <div class="image-container">
+                <img src="../Poze\FPK FA Linia 3.jpg" alt="FPK FA Linia 3">
+                <div class="title">FPK FA Linia 3</div>
+            </div>
+        </div>
+
+        <!-- Project 4 -->
+        <div class="item">
+            <div class="image-container">
+                <img src="../Poze\Display Assy L1.jpg" alt="Display Assy L1">
+                <div class="title">Display Assy L1</div>
+            </div>
+        </div>
+
+        <!-- Project 5 -->
+        <div class="item">
+            <div class="image-container">
+                <img src="../Poze\BMW_AZV.jpg" alt="Display Assy L2">
+                <div class="title">PSA</div>
+            </div>
+        </div>
+
+        <!-- Project 6 -->
+        <div class="item">
+            <div class="image-container">
+                <img src="../Poze\VS30 FA L1.jpeg" alt="VS30 FA L1">
+                <div class="title">MFA 2 HUD</div>
+            </div>
+        </div>
+        <!-- Project 7 -->
+        <div class="item">
+            <div class="image-container">
+                <img src="../Poze\VS30 FA L1.jpeg" alt="Fiat 500 BEV FA">
+                <div class="title">HUD 206</div>
+            </div>
+        </div>
+
+        <!-- Project 8 -->
+        <div class="item">
+            <div class="image-container">
+                <img src="../Poze\VS30 FA L1.jpeg" alt="Fiat 356 FDC FA">
+                <div class="title">HUD MMA</div>
+            </div>
+        </div>
+
+        <!-- Project 9 -->
+        <div class="item">
+            <div class="image-container">
+                <img src="../Poze\Ford.jpg" alt="Fiat 356 FA">
+                <div class="title">IDBUZZ FORD HUD</div>
+            </div>
+        </div>
+
+        <!-- Project 10 -->
+        <div class="item">
+            <div class="image-container">
+                <img src="../Poze\BMW_AZV.jpg" alt="AZV DCS">
+                <div class="title">BMW HIGH 4</div>
+            </div>
+        </div>
+
+        <!-- Project 11 -->
+        <div class="item">
+            <div class="image-container">
+                <img src="../Poze\VS30 FA L1.jpeg" alt="AZV I-CAM">
+                <div class="title">Daimler MBEAM</div>
+            </div>
+        </div>
+
+	<!-- Project 12 -->
+        <div class="item">
+            <div class="image-container">
+                <img src="../Poze\BMW_AZV.jpg" alt="AZV U25">
+                <div class="title">PGU</div>
+            </div>
+        </div>
+        <!-- Project 13 -->
+        <div class="item">
+            <div class="image-container">
+                <img src="../Poze\Spare.jpg" alt="Spare Lines">
+                <div class="title">Spare Lines</div>
+            </div>
+        </div>
+        <!-- Project 14 -->
+        <div class="item">
+            <div class="image-container">
+                <img src="../Poze\support.jpg" alt="Suport Engineering All Lines">
+                <div class="title">Suport Engineering All Lines</div>
+            </div>
+        </div>
+       
+       
+
+    <!-- Players -->
+        <div class="player" style="left: 80%; top: 30%;" data-id="1">
+            <img src="../Poze\Milotin.jpg" alt="Bocse">
+            <span class="player-name">Milotin Catalin</span>
+        </div>
+        <div class="player" style="left: 70%; top: 50%;" data-id="2">
+            <img src="../Poze\Plesa.jpg" alt="Plesa">
+            <span class="player-name">Plesa Daniel</span>
+        </div>
+
+        <div class="player" style="left: 70%; top: 50%;" data-id="3">
+            <img src="../Poze\Nitu.jpg" alt="Nitu">
+            <span class="player-name">Nitu Alexandru</span>
+        </div>
+	<div class="player" style="left: 70%; top: 50%;" data-id="4">
+            <img src="../Poze\Narcisa.jpg" alt="Narcisa">
+            <span class="player-name">Ostrovan Narcisa</span>
+        </div>
+	<div class="player" style="left: 70%; top: 50%;" data-id="5">
+            <img src="../Poze\Duta.jpg" alt="Duta">
+            <span class="player-name">Duta Mihail</span>
+        </div>
+	<div class="player" style="left: 70%; top: 50%;" data-id="6">
+            <img src="../Poze\Tanasa.jpg" alt="Tanasa">
+            <span class="player-name">Tanasa Florin-Alexandru</span>
+        </div>
+	<div class="player" style="left: 70%; top: 50%;" data-id="7">
+            <img src="../Poze\Cherlia.jpg" alt="Cherlia">
+            <span class="player-name">Cherlia Gabriel</span>
+        </div>
+	<div class="player" style="left: 70%; top: 50%;" data-id="8">
+            <img src="../Poze\Nicola.jpg" alt="Nicola">
+            <span class="player-name">Nicola Ionut Alin</span>
+        </div>
+       <div class="player" style="left: 20%; top: 30%;" data-id="9">
+            <img src="../Poze\Bencsik.jpg" alt="Bencsik">
+            <span class="player-name">Bencsik Andrei</span>
+        </div>
+        
+         <div class="player" style="left: 70%; top: 50%;" data-id="10">
+            <img src="../Poze\Tatomir.jpg" alt="Izabella">
+            <span class="player-name">Tatomir Adrian Emanoil</span>
+        </div>
+	<div class="player" style="left: 70%; top: 50%;" data-id="11">
+            <img src="../Poze\Cazan.jpg" alt="Todorescu">
+            <span class="player-name">Cazan Sebastian Alin</span>
+        </div>
+
+
+           <script>
+        // Drag and Drop Functionality
+        let draggedPlayer = null;
+        let offsetX = 0, offsetY = 0;
+
+        // Load saved positions on page load
+        window.onload = () => {
+            const savedPositions3 = JSON.parse(localStorage.getItem('playerPositions3')) || {};
+            document.querySelectorAll('.player').forEach(player => {
+                const playerId = player.getAttribute('data-id');
+                const position = savedPositions3[playerId];
+                if (position) {
+                    player.style.left = position.left;
+                    player.style.top = position.top;
+                }
+            });
+        };
+
+        document.querySelectorAll('.player').forEach(player => {
+            player.addEventListener('mousedown', (e) => {
+                draggedPlayer = player;
+                offsetX = e.offsetX;
+                offsetY = e.offsetY;
+                draggedPlayer.style.cursor = 'grabbing';
+
+                const onMouseMove = (e) => {
+                    draggedPlayer.style.left = `${e.pageX - offsetX - draggedPlayer.offsetParent.offsetLeft}px`;
+                    draggedPlayer.style.top = `${e.pageY - offsetY - draggedPlayer.offsetParent.offsetTop}px`;
+                };
+
+                document.addEventListener('mousemove', onMouseMove);
+
+                const onMouseUp = () => {
+                    draggedPlayer.style.cursor = 'grab';
+                    document.removeEventListener('mousemove', onMouseMove);
+                    document.removeEventListener('mouseup', onMouseUp);
+
+                    // Save the new position to localStorage
+                    const playerId = draggedPlayer.getAttribute('data-id');
+                    const newPosition3 = {
+                        left: draggedPlayer.style.left,
+                        top: draggedPlayer.style.top
+                    };
+
+                    const savedPositions3 = JSON.parse(localStorage.getItem('playerPositions3')) || {};
+                    savedPositions3[playerId] = newPosition3;
+                    localStorage.setItem('playerPositions3', JSON.stringify(savedPositions3));
+
+                    draggedPlayer = null;
+                };
+
+                document.addEventListener('mouseup', onMouseUp);
+            });
+
+            // Double Click to Open Another HTML Page
+            player.addEventListener('dblclick', () => {
+                const playerId = player.getAttribute('data-id');
+                const playerPages = {
+                    "1": "Milotin/MilotinCatalin.html", 
+              	    "2": "Plesa/PlesaDaniel.html",
+                    "3": "Nitu/NituAlexandru.html",
+                    "4": "Narcisa/OstrovanNarcisa.html",
+                    "5": "Duta/DutaMihail.html",
+                    "6": "Tanasa/TanasaFlorinAlexandru.html",
+                    "7": "Cherlia/CherliaGabriel.html",
+                    "8": "Nicola/NicolaIonutAlin.html",
+                    "9": "Bencsik/BencsikAndrei.html",
+                    "10": "Tatomir/TatomirAdrianEmanoil.html",
+		    "11": "Cazan/CazanSebastianAlin.html",
+		                   };
+
+                // Redirect to the corresponding player page
+                const redirectTo = playerPages[playerId] || `player-details.html?player=${playerId}`;
+                window.location.href = redirectTo;
+            });
+        });
+    </script>
+</body>
+</html>
