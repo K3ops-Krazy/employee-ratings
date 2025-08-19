@@ -10,7 +10,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // Ruta principală – trimite index.html
 app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, 'SkilsUX', 'Index.html'));
+  res.sendFile(path.join(__dirname, 'public', 'Index.html'));
 });
 
 // Portul corect
