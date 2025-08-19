@@ -1,27 +1,20 @@
-const express = require("express");
-const cors = require("cors");
+const express = require('express');
+const path = require('path');
+const cors = require('cors');
+
 const app = express();
-const PORT = process.env.PORT || 3000;
-
 app.use(cors());
-app.use(express.json());
 
-// Stocăm rating-urile în memorie (doar pentru test, se pierd la restart)
-let ratings = {};
+// Servește fișierele statice din folderul 'public'
+app.use(express.static(path.join(__dirname, 'public')));
 
-app.get("/ratings/:skill", (req, res) => {
-    const skill = req.params.skill;
-    res.json(ratings[skill] || []);
+// Ruta principală – trimite index.html
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, 'SkilsUX', 'index.html'));
 });
 
-app.post("/ratings/:skill", (req, res) => {
-    const skill = req.params.skill;
-    const { rating } = req.body;
-
-    if (!ratings[skill]) ratings[skill] = [];
-    ratings[skill].push(rating);
-
-    res.json({ message: "Rating adăugat", ratings: ratings[skill] });
+// Portul corect
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+  console.log(`Serverul rulează pe portul ${PORT}`);
 });
-
-app.listen(PORT, () => console.log(`Serverul rulează pe port ${PORT}`));
